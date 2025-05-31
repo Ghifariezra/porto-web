@@ -13,7 +13,7 @@ export default function About() {
           ))}
         </div>
         <h1 className="text-name mask-r-from-1">
-          Hi, I'm <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent dark:from-sky-400 dark:to-blue-500">Ghifari Ezra Ramadhan</span>
+          Hi, I&#39;m <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent dark:from-sky-400 dark:to-blue-500">Ghifari Ezra Ramadhan</span>
         </h1>
         <h2 className="text-role">
           <span className="text-sky-600 dark:text-sky-400">Full-Stack</span> Web Developer
