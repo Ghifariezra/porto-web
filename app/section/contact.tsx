@@ -4,7 +4,7 @@ import CircleIcon from "@mui/icons-material/Circle";
 
 export default function Contact() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:flex gap-4 sm:gap-8 border-t-[1px] justify-between items-center px-4 py-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:flex gap-4 sm:gap-8 border-t-[1px] justify-between items-center px-4 py-8">
       <button className="p-2 border-[1px] rounded-sm text-sm sm:text-base font-semibold cursor-pointer hover:bg-sky-600 hover:text-white dark:hover:bg-sky-400 dark:hover:text-zinc-900">
         <span className="flex justify-center items-center gap-2">
           <CircleIcon fontSize="small" className="animate-pulse" />
