@@ -1,17 +1,13 @@
-"use client";
-import About from "@/app/section/about/hero";
+import HeroAbout from "@/app/section/about/hero";
 import Experience from "@/app/section/about/experience";
 import Education from "@/app/section/about/education";
 
-export default function Home() {
+export default function About() {
   return (
     <main>
-      {/* <About />
+      <HeroAbout />
       <Experience />
-      <Education /> */}
-      <h1>
-        Home
-      </h1>
+      <Education />
     </main>
   );
 }

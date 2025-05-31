@@ -4,7 +4,7 @@ export default function Experience() {
   return (
     <section className="grid grid-rows-1 sm:grid-cols-3 sm:grid-rows-1 px-4 py-8 gap-4 sm:gap-8">
       <div className="sm:sticky sm:top-28 text-name place-self-center sm:place-self-start w-1/2 sm:w-full text-sky-600 dark:text-sky-400">
-        <h3>Work Experience</h3>
+        <h3 className="font-[family-name:var(--font-besley)]">Work Experience</h3>
       </div>
       <div className="flex flex-col gap-4 sm:col-span-2">
         {experienceItems.map((item) => (

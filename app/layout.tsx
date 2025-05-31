@@ -3,11 +3,17 @@ import Header from "@/app/shared/header";
 import Footer from "@/app/shared/footer";
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { Besley } from "next/font/google";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-plus-jakarta-sans",
+});
+
+const besley = Besley({
+  subsets: ["latin"],
+  variable: "--font-besley",
 });
 
 export const metadata: Metadata = {
@@ -22,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${plusJakartaSans.variable} bg-zinc-50 dark:bg-zinc-800 antialiased select-none text-zinc-950/80 dark:text-zinc-50/90 font-[family-name:var(--font-plus-jakarta-sans)] tracking-wider`}>
+      <body className={`${plusJakartaSans.variable} ${besley.variable} bg-zinc-50 dark:bg-zinc-800 antialiased select-none text-zinc-950/80 dark:text-zinc-50/90 font-[family-name:var(--font-plus-jakarta-sans)] tracking-wider`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
