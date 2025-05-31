@@ -19,8 +19,8 @@ export default function About() {
           <span className="text-sky-600 dark:text-sky-400">Full-Stack</span> Web Developer
         </h2>
         <p className="text-desc">
-          I'm a university student at Universitas Pancasila, currently exploring the world of full-stack web development. With a strong passion for technology, I’m committed to continuous learning and building digital solutions that are
-          both efficient and meaningful. I believe that technology is not just a tool, but a bridge to solving real-world problems. I’m always open to collaboration, innovation, and new challenges in the web development space.
+          I'm a university student at Universitas Pancasila, currently exploring the world of full-stack web development. With a strong passion for technology, I&#39;m committed to continuous learning and building digital solutions that are
+          both efficient and meaningful. I believe that technology is not just a tool, but a bridge to solving real-world problems. I&#39;m always open to collaboration, innovation, and new challenges in the web development space.
         </p>
       </div>
       <div className="place-self-end aspect-video sm:aspect-4/3 bg-zinc-200 rounded-2xl w-full h-full md:w-2/3 lg:w-full bg-cover bg-top order-1 sm:order-2 bg-[url('/dark-profile.png')] dark:bg-[url('/light-profile.png')] overflow-hidden">

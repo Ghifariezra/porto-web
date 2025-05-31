@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import About from "@/app/section/about";
 import Experience from "@/app/section/experience";
 import Education from "@/app/section/education";
