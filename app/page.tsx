@@ -1,10 +1,9 @@
 "use client";
+import Hero from "@/app/section/home/hero";
 export default function Home() {
   return (
     <main>
-      <h1>
-        Home
-      </h1>
+      <Hero />
     </main>
   );
 }

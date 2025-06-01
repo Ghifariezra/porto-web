@@ -66,6 +66,9 @@ importers:
       tailwindcss:
         specifier: ^4
         version: 4.1.8
+      tailwindcss-bg-patterns:
+        specifier: ^0.3.0
+        version: 0.3.0(tailwindcss@4.1.8)
       typescript:
         specifier: ^5
         version: 5.8.3
@@ -2047,6 +2050,11 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  tailwindcss-bg-patterns@0.3.0:
+    resolution: {integrity: sha512-3pXCiu9MPBvfBAEYgrxpNZLZoDlVHdkofpuQ9uhVQ2RT+80BTTweL9s0uIvakfH2LRl4GCG+nncyCB+1aN1gpA==}
+    peerDependencies:
+      tailwindcss: '>2'
 
   tailwindcss@4.1.8:
     resolution: {integrity: sha512-kjeW8gjdxasbmFKpVGrGd5T4i40mV5J2Rasw48QARfYeQ8YS9x02ON9SFWax3Qf616rt4Cp3nVNIj6Hd1mP3og==}
@@ -4337,6 +4345,10 @@ snapshots:
       has-flag: 4.0.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  tailwindcss-bg-patterns@0.3.0(tailwindcss@4.1.8):
+    dependencies:
+      tailwindcss: 4.1.8
 
   tailwindcss@4.1.8: {}
 

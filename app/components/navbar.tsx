@@ -56,7 +56,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center gap-4">
           {/* Toggle theme */}
           {mounted && (
-            <button aria-label="Toggle theme" onClick={handleThemeChange} className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-700 cursor-pointer">
+            <button aria-label="Toggle theme" onClick={handleThemeChange} className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-700 cursor-pointer">
               {isDark ? <LightModeRoundedIcon /> : <DarkModeRoundedIcon />}
             </button>
           )}
