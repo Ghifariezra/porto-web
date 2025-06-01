@@ -15,7 +15,7 @@ export default function Header() {
   }
 
   return (
-    <header className="inset-2 z-50 flex flex-col justify-between gap-2 items-center p-4 fixed">
+    <header className="inset-2 z-50 flex flex-col justify-start gap-2 items-center p-4 fixed">
       <Navbar />
     </header>
   );
