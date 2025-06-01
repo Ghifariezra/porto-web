@@ -51,7 +51,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="flex w-full justify-between items-center p-4 bg-zinc-50/30 backdrop-blur-md rounded-2xl border border-white/10">
-        <h1 className="font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">Ghifari Ezra Ramadhan</h1>
+        <Link href="/" className="font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">Ghifari Ezra Ramadhan</Link>
         {/* Toggle */}
         <div className="flex justify-between items-center gap-4">
           {/* Toggle theme */}
