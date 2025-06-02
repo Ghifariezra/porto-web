@@ -43,7 +43,7 @@ export default function Projects() {
                   <h2 className="font-semibold text-[11px] sm:text-base px-3 py-1 rounded-full border dark:border-none dark:bg-white text-zinc-800">{item.years}</h2>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <p className="font-medium text-xs sm:text-sm text-zinc-800/85 dark:text-zinc-100/85">{item.description}</p>
+                  <p className="font-medium text-xs sm:text-sm text-zinc-800/85 dark:text-zinc-100/85 line-clamp-6">{item.description}</p>
                   <div className="flex justify-start gap-2">
                     {item.icons.map((icon, i) => (
                       <div key={`${item.title}-icon-${i}`}>{icon}</div>
@@ -70,7 +70,7 @@ export default function Projects() {
                   <h2 className="font-semibold text-[11px] sm:text-base px-3 py-1 rounded-full border dark:border-none dark:bg-white text-zinc-800">{item.years}</h2>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <p className="font-medium text-xs sm:text-sm text-zinc-800/85 dark:text-zinc-100/85">{item.description}</p>
+                  <p className="font-medium text-xs sm:text-sm text-zinc-800/85 dark:text-zinc-100/85 line-clamp-6">{item.description}</p>
                   <div className="flex justify-start gap-2">
                     {item.icons.map((icon, i) => (
                       <div key={`${item.title}-icon-${i}`}>{icon}</div>
