@@ -13,7 +13,7 @@ export default function Projects() {
         {projectCards.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col w-full h-fit gap-4 px-6 pt-6 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl overflow-hidden group hover:shadow-xl hover:shadow-cyan-200/40 dark:hover:shadow-cyan-400/20 transition-transform duration-300 hover:scale-[1.02]"
+            className="flex flex-col w-full h-full gap-4 px-6 pt-6 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl overflow-hidden group hover:shadow-xl hover:shadow-cyan-200/40 dark:hover:shadow-cyan-400/20 transition-transform duration-300 hover:scale-[1.02]"
           >
             <div className="flex w-full justify-center items-center gap-2">
               <h1 className="font-bold text-center text-sm sm:text-lg px-3 py-1 rounded-full w-full bg-zinc-800 dark:bg-transparent dark:border-zinc-100 dark:border text-zinc-100">{item.status}</h1>
