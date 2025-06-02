@@ -1,6 +1,5 @@
 import { socialItems } from "@/app/utils/social-media";
 import Link from "next/link";
-import CircleIcon from "@mui/icons-material/Circle";
 
 export default function Contact() {
   return (
