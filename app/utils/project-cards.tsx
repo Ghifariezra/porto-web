@@ -33,7 +33,7 @@ export const projectCards: ProjectCards[] = [
     description:
       "A personal portfolio website showcasing your professional profile as a Tech Generalist with a minimalist and responsive design. Features intuitive navigation, contact information, tech stack display, and 3D avatar. Built using modern web technologies to reflect your skills and experience in web development.",
     image: "/projects/porto1.0.png",
-    icons: [<RiJavascriptFill className="w-6 h-6" />, <FaReact className="w-6 h-6" />, <RiTailwindCssFill className="w-6 h-6" />, <SiVite className="w-6 h-6" />],
+    icons: [<RiJavascriptFill className="w-6 h-6" key={"icon"} />, <FaReact className="w-6 h-6" key={"icon"} />, <RiTailwindCssFill className="w-6 h-6" key={"icon"} />, <SiVite className="w-6 h-6" key={"icon"} />],
   },
   {
     status: "Collaborative",
@@ -42,7 +42,7 @@ export const projectCards: ProjectCards[] = [
     description:
       "A data pipeline implementing standard Extract-Transform-Load processes for data processing. Utilizes Python for extracting and transforming data from various sources, then loading results into target databases. Includes interactive data visualizations to facilitate analysis and result presentation.",
     image: "/projects/ETL.png",
-    icons: [<FaPython className="w-6 h-6" />, <BiLogoPostgresql className="w-6 h-6" />, <SiLooker className="w-6 h-6" />],
+    icons: [<FaPython className="w-6 h-6" key={"icon"} />, <BiLogoPostgresql className="w-6 h-6" key={"icon"} />, <SiLooker className="w-6 h-6" key={"icon"} />],
   },
   {
     status: "Collaborative",
@@ -51,7 +51,7 @@ export const projectCards: ProjectCards[] = [
     description:
       "A modern data pipeline implementing Extract-Load-Transform architecture with GitHub as the data source. The workflow extracts data from GitHub repositories, loads it into a data warehouse, and transforms it using dbt for analytics. Leverages Python and Snowflake for efficient data processing, with final results visualized through Looker Studio for interactive business intelligence.",
     image: "/projects/ELT.png",
-    icons: [<FaGithub className="w-6 h-6" />, <SiPandas className="w-6 h-6" />, <FaRegSnowflake className="w-6 h-6" />, <SiDbt className="w-6 h-6" />, <SiLooker className="w-6 h-6" />],
+    icons: [<FaGithub className="w-6 h-6" key={"icon"} />, <SiPandas className="w-6 h-6" key={"icon"} />, <FaRegSnowflake className="w-6 h-6" key={"icon"} />, <SiDbt className="w-6 h-6" key={"icon"} />, <SiLooker className="w-6 h-6" key={"icon"} />],
   },
   {
     status: "Collaborative",
@@ -60,6 +60,6 @@ export const projectCards: ProjectCards[] = [
     description:
       "A containerized data pipeline solution for handling batch data processes. Utilizes Docker for containerization, PostgreSQL for data storage, and Airflow for workflow orchestration. Features a complete ETL cycle with dbt for data transformation and Looker Studio for visualization. Designed for scalable, maintainable data processing with modern cloud-native tooling.",
     image: "/projects/batch-processing.jpg",
-    icons: [<BiLogoPostgresql className="w-6 h-6" />, <FaDocker className="w-6 h-6" />, <SiApacheairflow className="w-6 h-6" />, <SiPandas className="w-6 h-6" />, <FaRegSnowflake className="w-6 h-6" />, <SiDbt className="w-6 h-6" />, <SiLooker className="w-6 h-6" />],
+    icons: [<BiLogoPostgresql className="w-6 h-6" key={"icon"} />, <FaDocker className="w-6 h-6" key={"icon"} />, <SiApacheairflow className="w-6 h-6" key={"icon"} />, <SiPandas className="w-6 h-6" key={"icon"} />, <FaRegSnowflake className="w-6 h-6" key={"icon"} />, <SiDbt className="w-6 h-6" key={"icon"} />, <SiLooker className="w-6 h-6" key={"icon"} />],
   },
 ];
