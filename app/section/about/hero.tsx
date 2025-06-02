@@ -1,8 +1,19 @@
+'use client';
 import { socialItems } from "@/app/utils/social-media";
 import Link from "next/link";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
+import {useState, useEffect, useRef} from "react";
 
 export default function HeroAbout() {
+  const [popupDownloaded, setPopupDownloaded] = useState(false);
+
+  const handleDownload = () => {
+    setPopupDownloaded(true);
+    setTimeout(() => {
+      setPopupDownloaded(false);
+    }, 3000);
+  };
+
   return (
     <section id="about" className="grid grid-rows-2 sm:grid-rows-1 sm:grid-cols-3 py-8 px-4 gap-4 sm:gap-8 justify-between items-center">
       <div className="flex flex-col justify-evenly w-full h-full order-2 sm:order-1 sm:col-span-2 gap-4">
@@ -25,6 +36,7 @@ export default function HeroAbout() {
         </p>
         <div className="flex place-content-center sm:place-content-start">
           <Link
+            onClick={handleDownload}
             href="https://drive.google.com/uc?export=download&id=1YCvYiw2lnNKDihbfp6BYJa5MTZllUPCU"
             className="flex items-center justify-center gap-2 bg-zinc-800 dark:bg-zinc-100 px-4 py-2 w-fit rounded-full cursor-pointer text-white dark:text-zinc-800 font-semibold"
           >
@@ -36,6 +48,14 @@ export default function HeroAbout() {
       <div className="mask-luminance mask-b-from-white mask-b-from-30% mask-b-to-black place-self-end aspect-video sm:aspect-4/3 bg-zinc-200 rounded-2xl w-full h-full md:w-2/3 lg:w-full bg-cover bg-top order-1 sm:order-2 bg-[url('/dark-profile.png')] dark:bg-[url('/light-profile.png')] overflow-hidden">
         <div className="w-full h-full bg-cover bg-center bg-[url('/scribble-mask-bg.jpg')] opacity-15" />
       </div>
+
+      {popupDownloaded && (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-zinc-800 dark:bg-zinc-100 px-4 py-2 rounded-full flex items-center justify-center gap-2">
+          <span className="text-white dark:text-zinc-800 font-semibold">
+            Successfully Downloaded
+          </span>
+        </div>
+      )}
     </section>
   );
 }
