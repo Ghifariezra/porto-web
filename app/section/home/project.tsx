@@ -52,7 +52,7 @@ export default function Projects() {
                 </div>
                 <div
                   ref={lessRef}
-                  className="aspect-square w-full sm:h-[200px] bg-cover rounded-t-2xl sm:rounded-none sm:bg-contain sm:bg-no-repeat bg-center overflow-hidden translate-y-10 group-hover:translate-y-5 transition-all duration-500 ease-in-out z-10 drop-shadow-sm"
+                  className="aspect-square w-full min-h-[200px] sm:h-[200px] rounded-t-2xl sm:rounded-none bg-cover sm:bg-contain sm:bg-no-repeat bg-center overflow-hidden sm:translate-y-10 sm:group-hover:translate-y-5 transition-all duration-500 ease-in-out z-10 drop-shadow-sm"
                   style={{ backgroundImage: `url(${item.image})` }}
                 ></div>
               </div>
