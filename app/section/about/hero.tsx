@@ -1,8 +1,8 @@
-'use client';
+"use client";
 import { socialItems } from "@/app/utils/social-media";
 import Link from "next/link";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
-import {useState, useEffect, useRef} from "react";
+import { useState } from "react";
 
 export default function HeroAbout() {
   const [popupDownloaded, setPopupDownloaded] = useState(false);
@@ -51,9 +51,7 @@ export default function HeroAbout() {
 
       {popupDownloaded && (
         <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-zinc-800 dark:bg-zinc-100 px-4 py-2 rounded-full flex items-center justify-center gap-2">
-          <span className="text-white dark:text-zinc-800 font-semibold">
-            Successfully Downloaded
-          </span>
+          <span className="text-white dark:text-zinc-800 font-semibold">Successfully Downloaded</span>
         </div>
       )}
     </section>
