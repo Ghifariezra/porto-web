@@ -23,7 +23,7 @@ export default function HeroAbout() {
           are both efficient and meaningful. I believe that technology is not just a tool, but a bridge to solving real-world problems. I&#39;m always open to collaboration, innovation, and new challenges in the web development space.
         </p>
       </div>
-      <div className="mask-luminance mask-b-from-white mask-b-from-40% mask-b-to-black place-self-end aspect-video sm:aspect-4/3 bg-zinc-200 rounded-2xl w-full h-full md:w-2/3 lg:w-full bg-cover bg-top order-1 sm:order-2 bg-[url('/dark-profile.png')] dark:bg-[url('/light-profile.png')] overflow-hidden">
+      <div className="mask-luminance mask-b-from-white mask-b-from-30% mask-b-to-black place-self-end aspect-video sm:aspect-4/3 bg-zinc-200 rounded-2xl w-full h-full md:w-2/3 lg:w-full bg-cover bg-top order-1 sm:order-2 bg-[url('/dark-profile.png')] dark:bg-[url('/light-profile.png')] overflow-hidden">
         <div className="w-full h-full bg-cover bg-center bg-[url('/scribble-mask-bg.jpg')] opacity-15" />
       </div>
     </section>
