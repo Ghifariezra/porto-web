@@ -25,8 +25,8 @@ export default function Projects() {
             <div className="flex flex-col gap-4">
               <p className="font-medium text-xs sm:text-sm text-zinc-800/85 dark:text-zinc-100/85">{item.description}</p>
               <div className="flex justify-start gap-2">
-                {item.icons.map((icon, index) => (
-                  <div key={index}>{icon}</div>
+                {item.icons.map((icon, i) => (
+                  <div key={`${item.title}-icon-${i}`}>{icon}</div>
                 ))}
               </div>
             </div>
