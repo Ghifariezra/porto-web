@@ -1,10 +1,12 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Navbar from "@/app/components/navbar";
+import { projectCards } from "@/app/utils/project-cards";
 
 export default function Header() {
   const pathname = usePathname();
-  const pathInteraction = ["/about"];
+  const projects = projectCards.map((item) => `/projects/${item.slug}`);
+  const pathInteraction = ["/about", ...projects];
 
   if (pathInteraction.includes(pathname)) {
     return (

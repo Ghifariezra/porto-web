@@ -33,23 +33,6 @@ export default function Contact() {
           iamezraramadhan@gmail.com
         </Link>
       </div>
-      {/* <div className="grid grid-cols-2 lg:flex gap-4 sm:gap-8 justify-between items-center w-full">
-        <h5 className="text-xs sm:text-base justify-self-center lg:justify-self-end">Ghifari Ezra Ramadhan @ {new Date().getFullYear()}</h5>
-        <div className="hidden lg:flex gap-4 flex-col place-self-center justify-evenly z-70">
-          {socialItems.map((item) => (
-            <Link key={item.name} href={item.href} target="_blank" className={item.style}>
-              {item.name}
-            </Link>
-          ))}
-        </div>
-        <div className="flex flex-col place-self-center lg:hidden gap-4 justify-evenly z-70">
-          {socialItems.map((item) => (
-            <Link key={item.name} href={item.href} target="_blank" className={item.style}>
-              {item.icon}
-            </Link>
-          ))}
-        </div>
-      </div> */}
     </div>
   );
 }
