@@ -1,9 +1,12 @@
 import { projectCards } from "@/app/utils/project-cards";
+import { notFound } from "next/navigation";
 
 export default async function Project({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+  const project = projectCards.find((item) => item.slug === params.slug);
 
-  const project = projectCards.find((item) => item.slug === slug);
+  if (!project) {
+    notFound(); // ⛑️ Menangani kasus slug tidak valid
+  }
 
   return (
     <section className="flex flex-col py-8 px-4 gap-8">
@@ -11,10 +14,10 @@ export default async function Project({ params }: { params: { slug: string } }) 
         <div className="aspect-4/2 w-full min-h-[250px] sm:min-h-[300px] md:max-h-[400px] bg-cover bg-center rounded-2xl" style={{ backgroundImage: `url(${project?.image})` }}></div>
 
         <div className="w-full flex flex-col justify-between gap-2">
-          <h1 className="font-semibold text-[11px] sm:text-base w-fit px-3 py-1 rounded-full border dark:border-none dark:bg-white text-zinc-800">{project?.title}</h1>
-          <h2 className="text-2xl sm:text-3xl font-bold">{project?.head}</h2>
+          <h1 className="font-semibold text-[11px] sm:text-base w-fit px-3 py-1 rounded-full border dark:border-none dark:bg-white text-zinc-800">{project.title}</h1>
+          <h2 className="text-2xl sm:text-3xl font-bold">{project.head}</h2>
 
-          {project?.partners && project?.role ? (
+          {project.partners && project.role ? (
             <>
               <div className="flex flex-col gap-2 mt-2">
                 <h3 className="text-base font-medium">
@@ -26,7 +29,7 @@ export default async function Project({ params }: { params: { slug: string } }) 
               </div>
               <hr />
             </>
-          ) : project?.team && project?.linkedinTeams ? (
+          ) : project.team && project.linkedinTeams ? (
             <>
               <div className="flex flex-col gap-2 mt-2">
                 <h3 className="text-base font-medium">
@@ -42,7 +45,7 @@ export default async function Project({ params }: { params: { slug: string } }) 
             </>
           ) : null}
 
-          <p className="text-sm">{project?.description}</p>
+          <p className="text-sm">{project.description}</p>
         </div>
       </div>
     </section>
