@@ -1,12 +1,16 @@
 import { projectCards } from "@/app/utils/project-cards";
 import { notFound } from "next/navigation";
 
-export default async function Project({ params }: { params: { slug: string } }) {
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export default async function Project({ params }: Props) {
   const project = projectCards.find((item) => item.slug === params.slug);
 
-  if (!project) {
-    notFound(); // ⛑️ Menangani kasus slug tidak valid
-  }
+  if (!project) notFound();
 
   return (
     <section className="flex flex-col py-8 px-4 gap-8">
