@@ -1,6 +1,12 @@
 import { projectCards } from "@/app/utils/project-cards";
 
-export default async function Project(props: Promise<{ params: Promise<{ slug: string }> }>) {
+export default async function Project(
+  props: {
+    params: {
+      slug: string;
+    };
+  }
+) {
   const { params } = await props;
   const { slug } = await params;
 
