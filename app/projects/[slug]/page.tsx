@@ -2,14 +2,15 @@ import { projectCards } from "@/app/utils/project-cards";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 };
 
-export default async function Project({ params }: Props) {
+export default async function Project(
+  props: Props
+) {
+  const params = await props.params;
   const project = projectCards.find((item) => item.slug === params.slug);
-
+  
   if (!project) notFound();
 
   return (
