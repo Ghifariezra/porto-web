@@ -1,9 +1,10 @@
 import { projectCards } from "@/app/utils/project-cards";
 
-export default async function Project({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function Project({ params }: { params: { slug: Promise<any> } }) {
+  const slug = await params.slug;
 
   const project = projectCards.find((item) => item.slug === slug);
+
   return (
     <section className="flex flex-col py-8 px-4 gap-8">
       <div className="flex flex-col lg:flex-row gap-4">
