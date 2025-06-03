@@ -29,7 +29,7 @@ export default async function Project(props: Props) {
                     {project.partners.map((item: string, index: number) => (
                       <li key={index}>
                         {project.linkedinPartners ? (
-                          <Link href={project.linkedinPartners} className="flex items-center gap-2" target="_blank">
+                          <Link href={project.linkedinPartners[index]} className="flex items-center gap-2" target="_blank">
                             <Avatar sx={{ width: 20, height: 20 }} variant="rounded">
                               <span className="text-sm">{item.charAt(0).toUpperCase()}</span>
                             </Avatar>
