@@ -38,13 +38,6 @@ export default function Projects() {
                 className="flex flex-col w-full h-full gap-4 px-4 sm:px-6 pt-6 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl overflow-hidden group hover:shadow-xl hover:shadow-cyan-200/40 dark:hover:shadow-cyan-400/20 transition-transform duration-300 hover:scale-[1.02]"
               >
                 <div className="flex w-full justify-center items-center gap-2">
-                  <Link
-                    href={`/projects/${item.slug}`}
-                    className="inline-flex justify-center items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-100 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:border-transparent transition-colors duration-300"
-                  >
-                    <span>View Project</span>
-                    <ArrowOutwardRoundedIcon fontSize="small" />
-                  </Link>
                   <h1 className="font-bold text-center text-sm sm:text-lg px-3 py-1 rounded-full w-full bg-zinc-800 dark:bg-transparent dark:border-zinc-100 dark:border text-zinc-100">{item.status}</h1>
                 </div>
                 <div className="flex justify-between items-center gap-2">
@@ -57,6 +50,15 @@ export default function Projects() {
                     {item.icons.map((icon, i) => (
                       <div key={`${item.title}-icon-${i}`}>{icon}</div>
                     ))}
+                  </div>
+                  <div className="flex justify-center">
+                    <Link
+                      href={`/projects/${item.slug}`}
+                      className="inline-flex justify-center items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-100 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:border-transparent transition-colors duration-300"
+                    >
+                      <span>View Project</span>
+                      <ArrowOutwardRoundedIcon fontSize="small" />
+                    </Link>
                   </div>
                 </div>
                 <div
@@ -71,13 +73,6 @@ export default function Projects() {
                 className="flex flex-col w-full h-full gap-4 px-4 sm:px-6 pt-6 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl overflow-hidden group hover:shadow-xl hover:shadow-cyan-200/40 dark:hover:shadow-cyan-400/20 transition-transform duration-300 hover:scale-[1.02]"
               >
                 <div className="flex w-full justify-center items-center gap-2">
-                  <Link
-                    href={`/projects/${item.slug}`}
-                    className="inline-flex justify-center items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-100 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:border-transparent transition-colors duration-300"
-                  >
-                    <span>View Project</span>
-                    <ArrowOutwardRoundedIcon fontSize="small" />
-                  </Link>
                   <h1 className="font-bold text-center text-sm sm:text-lg px-3 py-1 rounded-full w-full bg-zinc-800 dark:bg-transparent dark:border-zinc-100 dark:border text-zinc-100">{item.status}</h1>
                 </div>
                 <div className="flex justify-between items-center gap-2">
@@ -90,6 +85,15 @@ export default function Projects() {
                     {item.icons.map((icon, i) => (
                       <div key={`${item.title}-icon-${i}`}>{icon}</div>
                     ))}
+                  </div>
+                  <div className="flex justify-center">
+                    <Link
+                      href={`/projects/${item.slug}`}
+                      className="inline-flex justify-center items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-100 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:border-transparent transition-colors duration-300"
+                    >
+                      <span>View Project</span>
+                      <ArrowOutwardRoundedIcon fontSize="small" />
+                    </Link>
                   </div>
                 </div>
                 <div
