@@ -1,5 +1,5 @@
 import { projectCards } from "@/app/utils/project-cards";
-import { notFound } from "next/navigation";
+import NotFound from "@/app/not-found";
 import Avatar from "@mui/material/Avatar";
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ export default async function Project(props: Props) {
   const params = await props.params;
   const project = projectCards.find((item) => item.slug === params.slug);
 
-  if (!project) notFound();
+  if (!project) return <NotFound />;
 
   return (
     <section className="flex flex-col px-4 gap-8">
