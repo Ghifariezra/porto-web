@@ -21,7 +21,6 @@ export default async function Project(
         <div className="w-full flex flex-col justify-between gap-2">
           <h1 className="font-semibold text-[11px] sm:text-base w-fit px-3 py-1 rounded-full border dark:border-none dark:bg-white text-zinc-800">{project.title}</h1>
           <h2 className="text-2xl sm:text-3xl font-bold">{project.head}</h2>
-
           {project.partners && project.role ? (
             <>
               <div className="flex flex-col gap-2 mt-2">
