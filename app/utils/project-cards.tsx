@@ -20,7 +20,7 @@ interface ProjectCards {
   status: string;
   title: string;
   years: string;
-  partners?: string;
+  partners?: Array<string>;
   role?: string;
   team?: Array<string>;
   linkedinTeams?: Array<string>;
@@ -39,7 +39,7 @@ export const projectCards: ProjectCards[] = [
     status: "Collaborative",
     title: "Company Website",
     years: (yearNow - 0).toString(),
-    partners: "Muhammad Fadli Syukur",
+    partners: ["Muhammad Fadli Syukur"],
     role: "UI/UX Designer",
     linkedinPartners: "https://www.linkedin.com/in/muhammadfadlisyukur/",
     description:
@@ -64,7 +64,7 @@ export const projectCards: ProjectCards[] = [
     status: "Collaborative",
     title: "Extract, Transform, Load",
     years: (yearNow - 1).toString(),
-    partners: "",
+    partners: [""],
     role: "",
     team: ["Fine Oktafiani", "Giovani Govert"],
     linkedinTeams: ["https://www.linkedin.com/in/fineoktafiani/", "https://www.linkedin.com/in/giovanni-govert/"],
@@ -80,7 +80,7 @@ export const projectCards: ProjectCards[] = [
     status: "Collaborative",
     title: "Extract, Load, Transform",
     years: (yearNow - 1).toString(),
-    partners: "",
+    partners: [""],
     role: "",
     team: ["Fine Oktafiani", "Giovani Govert"],
     linkedinTeams: ["https://www.linkedin.com/in/fineoktafiani/", "https://www.linkedin.com/in/giovanni-govert/"],
@@ -102,7 +102,7 @@ export const projectCards: ProjectCards[] = [
     status: "Collaborative",
     title: "Batch Processing",
     years: (yearNow - 1).toString(),
-    partners: "",
+    partners: [""],
     role: "",
     team: ["Fine Oktafiani", "Giovani Govert"],
     linkedinTeams: ["https://www.linkedin.com/in/fineoktafiani/", "https://www.linkedin.com/in/giovanni-govert/"],
