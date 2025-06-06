@@ -13,11 +13,11 @@ export interface ProjectCard {
   status: string;
   title: string;
   years: string;
-  partners?: string[];
-  role?: string;
-  team?: string[];
-  linkedinTeams?: string[];
-  linkedinPartners?: string[];
+  partners?: string[] | null;
+  role?: string | null;
+  team?: string[] | null;
+  linkedinTeams?: string[] | null;
+  linkedinPartners?: string[] | null;
   description: string;
   image: string;
   icons: React.ReactNode[];
@@ -64,11 +64,11 @@ export const projectCards: ProjectCard[] = [
     status: "Pesonal",
     title: "Portofolio Web",
     years: `${yearNow}`,
-    partners: [""],
-    role: "",
-    team: [""],
-    linkedinTeams: [""],
-    linkedinPartners: [""],
+    partners: null,
+    role: null,
+    team: null,
+    linkedinTeams: null,
+    linkedinPartners: null,
     description:
       "A personal portfolio website showcasing your professional profile as a Tech Generalist with a minimalist and responsive design. Features intuitive navigation, contact information, tech stack display, and 3D avatar. Built using modern web technologies to reflect your skills and experience in web development.",
     image: "/projects/porto1.0.png",
@@ -83,10 +83,7 @@ export const projectCards: ProjectCard[] = [
     partners: [""],
     role: "",
     team: ["Fine Oktafiani", "Giovani Govert"],
-    linkedinTeams: [
-      "https://www.linkedin.com/in/fineoktafiani/",
-      "https://www.linkedin.com/in/giovanni-govert/",
-    ],
+    linkedinTeams: ["https://www.linkedin.com/in/fineoktafiani/", "https://www.linkedin.com/in/giovanni-govert/"],
     linkedinPartners: [""],
     description:
       "A data pipeline implementing the Extract-Transform-Load (ETL) process to migrate data from an OLTP system to a Data Warehouse. Built using Python and PostgreSQL, the pipeline cleans, transforms, and loads data to enable efficient analysis. Includes interactive visualizations to support data-driven insights and reporting.",
@@ -102,21 +99,12 @@ export const projectCards: ProjectCard[] = [
     partners: [""],
     role: "",
     team: ["Fine Oktafiani", "Giovani Govert"],
-    linkedinTeams: [
-      "https://www.linkedin.com/in/fineoktafiani/",
-      "https://www.linkedin.com/in/giovanni-govert/",
-    ],
+    linkedinTeams: ["https://www.linkedin.com/in/fineoktafiani/", "https://www.linkedin.com/in/giovanni-govert/"],
     linkedinPartners: [""],
     description:
       "A collaborative ELT project for building a modern data warehouse using the Northwind dataset sourced from GitHub CSVs. The pipeline extracts data, loads it into Snowflake, and transforms it using dbt to create curated data marts. Final insights are visualized in Looker Studio, enabling business analysis such as top-performing employees, supplier revenue, and product category trends. Tools used include Python, dbt, Snowflake, and Looker Studio.",
     image: "/projects/ELT.png",
-    icons: [
-      icon.github,
-      icon.pandas,
-      icon.snowflake,
-      icon.dbt,
-      icon.looker,
-    ],
+    icons: [icon.github, icon.pandas, icon.snowflake, icon.dbt, icon.looker],
   },
   {
     slug: "batch-processing",
@@ -127,22 +115,11 @@ export const projectCards: ProjectCard[] = [
     partners: [""],
     role: "",
     team: ["Fine Oktafiani", "Giovani Govert"],
-    linkedinTeams: [
-      "https://www.linkedin.com/in/fineoktafiani/",
-      "https://www.linkedin.com/in/giovanni-govert/",
-    ],
+    linkedinTeams: ["https://www.linkedin.com/in/fineoktafiani/", "https://www.linkedin.com/in/giovanni-govert/"],
     linkedinPartners: [""],
     description:
       "A collaborative ELT batch processing pipeline that automates daily data workflows using Apache Airflow. The system extracts data, loads it into Snowflake, and transforms it with dbt to populate a data mart for analytics. Task dependencies are managed using Airflow DAGs with scheduled runs at 12 PM. The entire pipeline is containerized with Docker and utilizes PostgreSQL for intermediate storage. Final results are visualized using Looker Studio to support business decision-making. This project focuses on scalability, automation, and maintainability using modern cloud-native tools.",
     image: "/projects/batch-processing.jpg",
-    icons: [
-      icon.postgresql,
-      icon.docker,
-      icon.airflow,
-      icon.pandas,
-      icon.snowflake,
-      icon.dbt,
-      icon.looker,
-    ],
+    icons: [icon.postgresql, icon.docker, icon.airflow, icon.pandas, icon.snowflake, icon.dbt, icon.looker],
   },
 ];
