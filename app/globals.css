@@ -3,15 +3,69 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer components {
+    .nav-desk {
+        @apply flex w-full justify-between items-center p-4 bg-zinc-50/30 backdrop-blur-md rounded-2xl border border-white/10;
+    }
+
+    .logo-link {
+        @apply font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl hover:scale-97;
+    }
+
+    .wrapper-toggle {
+        @apply flex justify-between items-center gap-4;
+    }
+
+    .toggle-theme {
+        @apply flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-700 cursor-pointer;
+    }
+
+    .toggle-menu {
+        @apply sm:hidden flex items-center justify-center w-10 h-10 rounded-full transition-colors dark:hover:bg-sky-800 hover:bg-sky-100 cursor-pointer
+    }
+
+    .wrapper-menu {
+        @apply hidden sm:flex justify-between items-center gap-8;
+    }
+
+    .menu {
+        @apply font-semibold;
+    }
+
+    .line-link {
+        @apply underline underline-offset-8;
+    }
+
+    .button-logout {
+        @apply text-sm sm:text-base group-hover:underline group-hover:underline-offset-8 cursor-pointer;
+    }
+
+    .wrapper-menu-mobile {
+        @apply flex flex-col justify-between items-center gap-4;
+    }
+
+    .mobile-menu {
+        @apply sm:hidden w-full shadow-md py-4 px-6 bg-zinc-50/30 backdrop-blur-md rounded-2xl border border-white/10;
+    }
+
+    .home-hero {
+        @apply flex flex-col justify-center items-center gap-4 sm:gap-8;
+    }
+    .wrapper-name {
+        @apply absolute z-50 flex flex-col justify-end items-end gap-4 w-full h-full;
+    }
+    .group-name {
+        @apply flex flex-col justify-center items-center w-full bg-zinc-50/40 dark:bg-zinc-800/40 p-2 text-center font-[family-name:var(--font-besley)] gap-1;
+    }
+
     .text-name {
         @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center sm:text-left;
     }
-    
+
     .text-role {
         @apply text-base sm:text-lg font-semibold text-center sm:text-left;
     }
 
-    .text-desc{
+    .text-desc {
         @apply text-sm sm:text-base dark:text-zinc-100 font-light text-center sm:text-left;
     }
 }

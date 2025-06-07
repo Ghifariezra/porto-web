@@ -8,18 +8,25 @@ import { useTheme } from "next-themes";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-/**
- * A component that renders the navbar with links to all the pages and a theme toggle.
- *
- * @returns The navbar component.
- */
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
 
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      const res = await fetch("/api/me");
+      const data = await res.json();
+      setIsLoggedIn(data.isLoggedIn);
+    };
+    checkLogin();
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -50,46 +57,76 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="flex w-full justify-between items-center p-4 bg-zinc-50/30 backdrop-blur-md rounded-2xl border border-white/10">
-        <Link href="/" className="font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl hover:scale-97">Ghifari Ezra Ramadhan</Link>
+      <nav className="nav-desk">
+        <Link href="/" className="logo-link">
+          Ghifari Ezra Ramadhan
+        </Link>
         {/* Toggle */}
-        <div className="flex justify-between items-center gap-4">
+        <div className="wrapper-toggle">
           {/* Toggle theme */}
           {mounted && (
-            <button aria-label="Toggle theme" onClick={handleThemeChange} className="flex items-center justify-center w-10 h-10 rounded-full transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-700 cursor-pointer">
+            <button aria-label="Toggle theme" onClick={handleThemeChange} className="toggle-theme">
               {isDark ? <LightModeRoundedIcon /> : <DarkModeRoundedIcon />}
             </button>
           )}
 
           {/* Toggle menu */}
-          <button aria-label="Toggle menu" onClick={toggleMenu} className="sm:hidden flex items-center justify-center w-10 h-10 rounded-full transition-colors dark:hover:bg-sky-800 hover:bg-sky-100 cursor-pointer">
+          <button aria-label="Toggle menu" onClick={toggleMenu} className="toggle-menu">
             {isOpen ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
           </button>
         </div>
 
         {/* Desktop menu */}
-        <ul className="hidden sm:flex justify-between items-center gap-8">
+        <ul className="wrapper-menu">
           {navbarItems.map((item) => (
-            <li key={item.name} className="font-semibold group">
-              <Link href={item.href} className={`${item.style} ${pathname === item.href ? "underline underline-offset-8" : ""}`}>
+            <li key={item.name} className="menu group">
+              <Link href={item.href} className={`${item.style} ${pathname === item.href ? "line-link" : ""}`}>
                 {item.name}
               </Link>
             </li>
           ))}
+          {isLoggedIn && (
+            <li className="menu group">
+              <button
+                onClick={async () => {
+                  await fetch("/api/logout", { method: "GET" }); // Pastikan ini GET ya
+                  setIsLoggedIn(false);
+                  router.push("/admin/login");
+                }}
+                className="button-logout"
+              >
+                Logout
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="sm:hidden w-full shadow-md py-4 px-6 bg-zinc-50/30 backdrop-blur-md rounded-2xl border border-white/10" ref={toggleRef}>
-          <ul className="flex flex-col justify-between items-center gap-4">
+        <div className="mobile-menu" ref={toggleRef}>
+          <ul className="wrapper-menu-mobile">
             {navbarItems.map((item) => (
-              <li key={item.name} className="font-semibold group">
+              <li key={item.name} className="menu group">
                 <Link href={item.href} className={`${item.style} ${pathname === item.href ? "underline" : ""}`}>
                   {item.name}
                 </Link>
               </li>
             ))}
+            {isLoggedIn && (
+              <li className="menu group">
+                <button
+                  onClick={async () => {
+                    await fetch("/api/logout", { method: "GET" }); // Pastikan ini GET ya
+                    setIsLoggedIn(false);
+                    router.push("/admin/login");
+                  }}
+                  className="button-logout"
+                >
+                  Logout
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       )}

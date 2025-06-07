@@ -1,9 +1,9 @@
 export default function Hero() {
   return (
-    <section className="flex flex-col justify-center items-center gap-4 sm:gap-8">
+    <section className="home-hero">
       {/* Name Field */}
-      <div className="absolute z-50 flex flex-col justify-end items-end gap-4 w-full h-full">
-        <div className="flex flex-col justify-center items-center w-full bg-zinc-50/40 dark:bg-zinc-800/40 p-2 text-center font-[family-name:var(--font-besley)] gap-1">
+      <div className="wrapper-name">
+        <div className="group-name">
           <h1 className="text-sm sm:text-lg lg:text-2xl font-bold">Hi, I&#39;m Ghifari Ezra Ramadhan</h1>
           <h2 className="text-xs sm:text-sm lg:text-lg font-semibold">Full-Stack Web Developer</h2>
           <p className="text-[10px] sm:text-xs lg:text-sm">I&#39;m a university student at Universitas Pancasila, currently exploring the world of full-stack web development.</p>
