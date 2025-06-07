@@ -27,4 +27,7 @@ export default [
       },
     },
   },
+  {
+    ignores: ["app/generated/prisma/**"], // ⛔ skip lint folder ini
+  },
 ];
