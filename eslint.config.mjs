@@ -1,7 +1,7 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import tsParser from "@typescript-eslint/parser"; // ✅ import parser sebagai objek
+import tsParser from "@typescript-eslint/parser";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -19,7 +19,7 @@ export default [
   {
     files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
-      parser: tsParser, // ✅ gunakan objek, bukan string
+      parser: tsParser,
       parserOptions: {
         project: "./tsconfig.json",
         tsconfigRootDir: __dirname,
