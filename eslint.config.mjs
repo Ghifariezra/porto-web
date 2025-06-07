@@ -1,6 +1,7 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import tsParser from "@typescript-eslint/parser"; // ✅ import parser sebagai objek
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -18,10 +19,10 @@ export default [
   {
     files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
-      parser: "@typescript-eslint/parser",
+      parser: tsParser, // ✅ gunakan objek, bukan string
       parserOptions: {
-        project: "./tsconfig.json", // ⬅️ Tambahkan baris ini
-        tsconfigRootDir: __dirname, // ⬅️ Ini penting untuk Vercel & monorepo
+        project: "./tsconfig.json",
+        tsconfigRootDir: __dirname,
         sourceType: "module",
       },
     },
