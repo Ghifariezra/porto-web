@@ -14,7 +14,7 @@ const eslintConfig = [
     "next/core-web-vitals",
     "next/typescript",
     "plugin:@typescript-eslint/recommended",
-    "prisma"
+    // "prisma"
   ),
 ];
 
