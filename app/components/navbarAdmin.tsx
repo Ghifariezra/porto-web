@@ -1,5 +1,5 @@
 "use client";
-import { navbarItems } from "@/app/utils/navbar";
+import { navbarAdminItems } from "@/app/utils/navbar";
 import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
@@ -9,13 +9,22 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Navbar() {
+export default function NavbarAdmin() {
   const pathname = usePathname();
 
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      const res = await fetch("/api/me");
+      const data = await res.json();
+      setIsLoggedIn(data.isLoggedIn);
+    };
+    checkLogin();
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -67,13 +76,27 @@ export default function Navbar() {
 
         {/* Desktop menu */}
         <ul className="wrapper-menu">
-          {navbarItems.map((item) => (
+          {navbarAdminItems.map((item) => (
             <li key={item.name} className="menu group">
               <Link href={item.href} className={`${item.style} ${pathname === item.href ? "line-link" : ""}`}>
                 {item.name}
               </Link>
             </li>
           ))}
+          {isLoggedIn && (
+            <li className="menu group">
+              <button
+                onClick={async () => {
+                  await fetch("/api/logout", { method: "GET" }); // Pastikan ini GET ya
+                  setIsLoggedIn(false);
+                  window.location.reload();
+                }}
+                className="button-logout"
+              >
+                Logout
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
 
@@ -81,13 +104,27 @@ export default function Navbar() {
       {isOpen && (
         <div className="mobile-menu" ref={toggleRef}>
           <ul className="wrapper-menu-mobile">
-            {navbarItems.map((item) => (
+            {navbarAdminItems.map((item) => (
               <li key={item.name} className="menu group">
                 <Link href={item.href} className={`${item.style} ${pathname === item.href ? "underline" : ""}`}>
                   {item.name}
                 </Link>
               </li>
             ))}
+            {isLoggedIn && (
+              <li className="menu group">
+                <button
+                  onClick={async () => {
+                    await fetch("/api/logout", { method: "GET" }); // Pastikan ini GET ya
+                    setIsLoggedIn(false);
+                    window.location.reload();
+                  }}
+                  className="button-logout"
+                >
+                  Logout
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       )}

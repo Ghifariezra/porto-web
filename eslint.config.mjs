@@ -13,8 +13,7 @@ const eslintConfig = [
   ...compat.extends(
     "next/core-web-vitals",
     "next/typescript",
-    "plugin:@typescript-eslint/recommended",
-    "prisma"
+    "plugin:@typescript-eslint/recommended"
   ),
 ];
 
