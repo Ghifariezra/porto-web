@@ -13,9 +13,9 @@ const eslintConfig = [
   ...compat.extends(
     "next/core-web-vitals",
     "next/typescript",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prisma/recommended" // ⬅️ Tambahkan jika ingin rule-nya
   ),
-  { plugin: ["prisma"], }
 ];
 
 export default eslintConfig;
