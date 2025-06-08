@@ -2,37 +2,16 @@
 import Markdown from "react-markdown";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import { useState, useEffect } from "react";
-
-interface BlogOverview {
-  id: number;
-  user_id: number;
-  image?: string | null;
-  date: string;
-  title: string;
-  description: string;
-}
-
-const formatDate = (dateStr: string) =>
-  new Date(dateStr).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+import { fetchBlogItems, formatDate, BlogOverview } from "@/app/utils/blog";
 
 export default function BlogUser() {
   const [blogItems, setBlogItems] = useState<BlogOverview[]>([]);
   useEffect(() => {
-    const fetchBlogItems = async () => {
-      try {
-        const response = await fetch("/api/blogs");
-        const data = await response.json();
-        const blogs = data.flatMap((item: { blogs: BlogOverview[] }) => item.blogs);
-        setBlogItems(blogs);
-      } catch (error) {
-        console.error("Error fetching blog items:", error);
-      }
+    const fetchItems = async () => {
+      const items = await fetchBlogItems();
+      setBlogItems(items);
     };
-    fetchBlogItems();
+    fetchItems();
   }, []);
 
   return (

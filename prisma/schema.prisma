@@ -32,5 +32,6 @@ model blogs {
   date        DateTime @db.Date
   title       String
   description String
+  content     String?
   users       users    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 }

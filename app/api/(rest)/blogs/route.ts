@@ -9,10 +9,14 @@ export async function GET() {
       blogs: {
         select: {
           id: true,
+          user_id: true,
           title: true,
           description: true,
           image: true,
           date: true,
+        },
+        orderBy: {
+          date: "desc",
         },
       },
     }

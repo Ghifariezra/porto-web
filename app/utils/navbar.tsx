@@ -14,5 +14,5 @@ export const navbarItems: Navbar[] = [
 ];
 export const navbarAdminItems: Navbar[] = [
   { name: "Home", href: "/admin/dashboard", style: styleNavbar },
-  { name: "Blog", href: "/admin/Blog", style: styleNavbar },
+  { name: "Posts", href: "/admin/posts", style: styleNavbar },
 ];
