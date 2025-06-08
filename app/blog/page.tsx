@@ -1,9 +1,40 @@
 "use client";
 import Markdown from "react-markdown";
-import { blogItems } from "@/app/utils/blog";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
+import { useState, useEffect } from "react";
+
+interface BlogOverview {
+  id: number;
+  user_id: number;
+  image?: string | null;
+  date: string;
+  title: string;
+  description: string;
+}
+
+const formatDate = (dateStr: string) =>
+  new Date(dateStr).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 
 export default function BlogUser() {
+  const [blogItems, setBlogItems] = useState<BlogOverview[]>([]);
+  useEffect(() => {
+    const fetchBlogItems = async () => {
+      try {
+        const response = await fetch("/api/blogs");
+        const data = await response.json();
+        const blogs = data.flatMap((item: { blogs: BlogOverview[] }) => item.blogs);
+        setBlogItems(blogs);
+      } catch (error) {
+        console.error("Error fetching blog items:", error);
+      }
+    };
+    fetchBlogItems();
+  }, []);
+
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-4 py-8 bg-zinc-50 dark:bg-zinc-800">
       <div className="col-span-2 h-fit">
@@ -14,7 +45,7 @@ export default function BlogUser() {
             </div>
             <div className="flex flex-col gap-2 md:gap-4 w-fit">
               <span className="text-sm text-zinc-600 dark:text-zinc-300">
-                <Markdown>{item.date}</Markdown>
+                <Markdown>{formatDate(item.date)}</Markdown>
               </span>
               <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                 <Markdown>{item.title}</Markdown>
@@ -37,7 +68,7 @@ export default function BlogUser() {
                 <span className="w-full h-full flex justify-center items-center font-bold p-4 text-center">Halaman admin belum tayang... kudanil lagi nyoba install niat dulu.</span>
               </div>
               <span className="text-sm text-zinc-600 dark:text-zinc-300">
-                <Markdown>{item.date}</Markdown>
+                <Markdown>{formatDate(item.date)}</Markdown>
               </span>
               <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                 <Markdown>{item.title}</Markdown>
