@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Markdown from "react-markdown";
 import { useSearchParams } from "next/navigation";
@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation";
 function NewPostPage() {
   const router = useRouter();
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -38,6 +39,31 @@ function NewPostPage() {
     } else {
       alert("Failed to add new post");
     }
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("/api/blogs/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setImageUrl(data.url);
+        alert("Image uploaded successfully!");
+      } else {
+        alert("Image upload failed.");
+      }
+    }
+  };
+
+  const handleImageClick = () => {
+    fileInputRef.current?.click();
   };
 
   const handleDrop = async (e: React.DragEvent) => {
@@ -80,9 +106,10 @@ function NewPostPage() {
           </label>
 
           <label className="flex flex-col">
-            <span className="font-semibold">Upload Image (Drag & Drop)</span>
-            <div onDragOver={(e) => e.preventDefault()} onDrop={handleDrop} className="border border-dashed border-gray-400 p-6 text-center rounded cursor-pointer hover:bg-gray-50 dark:hover:bg-white/10">
-              {imageUrl ? <div className="w-full aspect-video bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${encodeURI(imageUrl)})` }} /> : <p className="text-gray-500">Drag and drop an image here</p>}
+            <span className="font-semibold">Upload Image (Drag & Drop or Click)</span>
+            <input type="file" accept="image/*" ref={fileInputRef} className="hidden" onChange={handleFileChange} />
+            <div onClick={handleImageClick} onDragOver={(e) => e.preventDefault()} onDrop={handleDrop} className="border border-dashed border-gray-400 p-6 text-center rounded cursor-pointer hover:bg-gray-50 dark:hover:bg-white/10">
+              {imageUrl ? <div className="w-full aspect-video bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${encodeURI(imageUrl)})` }} /> : <p className="text-gray-500">Click or drag and drop an image here</p>}
             </div>
           </label>
 
@@ -116,7 +143,8 @@ function NewPostPage() {
 }
 function EditPostPage({ id }: { id: string }) {
   const router = useRouter();
-
+  
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -160,6 +188,31 @@ function EditPostPage({ id }: { id: string }) {
     }
   };
 
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("/api/blogs/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setImageUrl(data.url);
+        alert("Image uploaded successfully!");
+      } else {
+        alert("Image upload failed.");
+      }
+    }
+  };
+
+  const handleImageClick = () => {
+    fileInputRef.current?.click();
+  };
+
   const handleDrop = async (e: React.DragEvent) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
@@ -200,9 +253,10 @@ function EditPostPage({ id }: { id: string }) {
           </label>
 
           <label className="flex flex-col">
-            <span className="font-semibold">Upload Image (Drag & Drop)</span>
-            <div onDragOver={(e) => e.preventDefault()} onDrop={handleDrop} className="border border-dashed border-gray-400 p-6 text-center rounded cursor-pointer hover:bg-gray-50 dark:hover:bg-white/10">
-              {imageUrl ? <div className="w-full aspect-video bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${encodeURI(imageUrl)})` }} /> : <p className="text-gray-500">Drag and drop an image here</p>}
+            <span className="font-semibold">Upload Image (Drag & Drop or Click)</span>
+            <input type="file" accept="image/*" ref={fileInputRef} className="hidden" onChange={handleFileChange} />
+            <div onClick={handleImageClick} onDragOver={(e) => e.preventDefault()} onDrop={handleDrop} className="border border-dashed border-gray-400 p-6 text-center rounded cursor-pointer hover:bg-gray-50 dark:hover:bg-white/10">
+              {imageUrl ? <div className="w-full aspect-video bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${encodeURI(imageUrl)})` }} /> : <p className="text-gray-500">Click or drag and drop an image here</p>}
             </div>
           </label>
 

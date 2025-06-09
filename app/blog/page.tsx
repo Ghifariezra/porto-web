@@ -18,10 +18,10 @@ export default function BlogUser() {
     <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-4 py-8 bg-zinc-50 dark:bg-zinc-800">
       <div className="col-span-2 h-fit">
         {blogItems.slice(0, 1).map((item, index) => (
-          <div key={index} className="flex sm:flex-row flex-col gap-4 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl shadow p-4">
+          <div key={index} className="flex sm:flex-row flex-col gap-4 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl shadow p-4 overflow-hidden">
             {item.image ? (
               <div
-                className="aspect-2/1 bg-transparent border border-zinc-200 dark:border-white/10 w-full rounded-lg bg-contain bg-no-repeat bg-center"
+                className="aspect-2/1 bg-transparent border border-zinc-200 dark:border-white/10 w-full rounded-lg bg-cover bg-center"
                 style={{
                   backgroundImage: item.image ? `url(${encodeURI(item.image)})` : "none",
                 }}
@@ -38,7 +38,7 @@ export default function BlogUser() {
               <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                 <Markdown>{item.title}</Markdown>
               </span>
-              <span className="text-base text-zinc-700 dark:text-zinc-300 ">
+              <span className="text-base text-zinc-700 dark:text-zinc-300">
                 <Markdown>{item.description}</Markdown>
               </span>
               <button className="flex w-fit items-center gap-1 text-zinc-900 dark:text-zinc-100 border border-zinc-200 dark:border-white/10 hover:bg-zinc-200 dark:hover:bg-white/10 hover:text-zinc-800 dark:hover:text-zinc-100 transition duration-300 ease-in-out font-semibold py-2 px-4 rounded-full cursor-pointer">
@@ -51,10 +51,10 @@ export default function BlogUser() {
       <div className="grid sm:grid-cols-2 col-span-2 gap-4">
         {blogItems.slice(1).map((item, index) => (
           <div key={index} className="w-full">
-            <div className="flex flex-col gap-4 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl shadow p-4 h-full justify-between">
+            <div className="flex flex-col gap-4 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl shadow p-4 h-full justify-between overflow-hidden">
               {item.image ? (
                 <div
-                  className="aspect-2/1 bg-transparent border border-zinc-200 dark:border-white/10 w-full rounded-lg bg-contain bg-no-repeat bg-center"
+                  className="aspect-2/1 bg-transparent border border-zinc-200 dark:border-white/10 w-full rounded-lg bg-cover bg-center"
                   style={{
                     backgroundImage: item.image ? `url(${encodeURI(item.image)})` : "none",
                   }}
