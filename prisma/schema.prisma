@@ -26,12 +26,13 @@ model users {
 }
 
 model blogs {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   user_id     Int
   image       String?
-  date        DateTime @db.Date
+  date        DateTime  @db.Date
   title       String
   description String
   content     String?
-  users       users    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  updated_at  DateTime? @default(now()) @db.Timestamp(6)
+  users       users     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 }

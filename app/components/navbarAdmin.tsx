@@ -56,7 +56,7 @@ export default function NavbarAdmin() {
   return (
     <>
       <nav className="nav-desk">
-        <Link href="/" className="logo-link">
+        <Link href="/admin/dashboard" className="logo-link">
           Ghifari Ezra Ramadhan
         </Link>
         {/* Toggle */}

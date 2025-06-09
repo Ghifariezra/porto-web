@@ -5,6 +5,7 @@ export interface BlogOverview {
   date: string;
   title: string;
   description: string;
+  updated_at?: string;
 }
 
 export const formatDate = (dateStr: string) =>
@@ -16,7 +17,13 @@ export const formatDate = (dateStr: string) =>
 
 export const fetchBlogItems = async () => {
   try {
-    const response = await fetch("/api/blogs");
+    const response = await fetch(
+        "/api/blogs",
+        {
+            method: "GET",
+            // credentials: "include",
+        }
+    );
     const data = await response.json();
     const blogs = data.flatMap((item: { blogs: BlogOverview[] }) => item.blogs);
     return blogs;

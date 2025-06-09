@@ -1,5 +1,5 @@
 import prisma from "@/app/lib/prisma";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 export async function GET() {
   const userPosts = await prisma.users.findMany({
@@ -19,7 +19,7 @@ export async function GET() {
           date: "desc",
         },
       },
-    }
+    },
   });
   return NextResponse.json(userPosts);
 }

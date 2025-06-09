@@ -7,6 +7,7 @@ import EditNoteRoundedIcon from "@mui/icons-material/EditNoteRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import Link from "next/link";
 
+
 export default function BlogAdmin() {
   const [blogItems, setBlogItems] = useState<BlogOverview[]>([]);
   const [popupDelete, setPopupDelete] = useState(false);
@@ -23,7 +24,6 @@ export default function BlogAdmin() {
 
   const refDelete = useRef<HTMLDivElement>(null);
   const handlePopupDelete = (id: number) => {
-    console.log(id);
     setPopupDelete(!popupDelete);
     setDeleteId(id);
     return;
@@ -43,12 +43,11 @@ export default function BlogAdmin() {
 
   const handleDelete = async (id: number) => {
     try {
-      await fetch(`/api/delete`, {
+      await fetch(`/api/blogs/delete/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id }),
       });
       window.location.reload();
     } catch (error) {
@@ -58,15 +57,15 @@ export default function BlogAdmin() {
 
   return (
     <div className="flex flex-col gap-4  px-4 py-8">
-      <Link href="/admin/posts/new" className="flex w-fit bg-sky-600 items-center justify-center p-4 rounded-md text-white cursor-pointer font-semibold hover:bg-sky-500">
+      <Link href="/admin/posts/new" className="flex w-fit bg-sky-600 items-center justify-center px-4 py-2 rounded-md text-white cursor-pointer font-semibold hover:bg-sky-500">
         <AddRoundedIcon />
         New Post
       </Link>
       <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
         {blogItems.map((item, index) => (
           <div key={index} className="w-full">
-            <div className="flex gap-4 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl shadow p-4 h-full justify-between">
-              <div className="aspect-6/2 bg-transparent border border-zinc-200 dark:border-white/10 w-[50%] rounded-lg" />
+            <div className="flex flex-col sm:flex-row gap-4 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl shadow p-4 h-full justify-between">
+              <div className="aspect-6/2 bg-transparent border border-zinc-200 dark:border-white/10 sm:w-[50%] rounded-lg" />
               <div className="flex flex-col w-full gap-2 md:gap-4">
                 <span className="text-sm text-zinc-600 dark:text-zinc-300">
                   <Markdown>{formatDate(item.date)}</Markdown>
@@ -78,10 +77,16 @@ export default function BlogAdmin() {
                   <Markdown>{item.description}</Markdown>
                 </span>
                 <div className="flex gap-2">
-                  <button className="flex w-fit bg-sky-600 items-center justify-center px-4 py-2 rounded-md text-white cursor-pointer font-semibold hover:bg-sky-500">
+                  <Link
+                    href={{
+                      pathname: "/admin/posts/edit",
+                      query: { id: item.id },
+                    }}
+                    className="flex w-fit bg-sky-600 items-center justify-center px-4 py-2 rounded-md text-white cursor-pointer font-semibold hover:bg-sky-500"
+                  >
                     <EditNoteRoundedIcon />
                     Edit
-                  </button>
+                  </Link>
                   <button
                     onClick={() => {
                       handlePopupDelete(item.id);
