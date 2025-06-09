@@ -63,7 +63,7 @@ export default function NewPostPage() {
             <button type="submit" className="bg-sky-600 hover:bg-sky-500 text-white font-semibold py-2 px-4 rounded cursor-pointer">
               Save Post
             </button>
-            <button type="button" className="bg-gray-300 hover:bg-gray-200 text-black font-semibold py-2 px-4 rounded cursor-pointer" onClick={() => router.push("/admin")}>
+            <button type="button" className="bg-gray-300 hover:bg-gray-200 text-black font-semibold py-2 px-4 rounded cursor-pointer" onClick={() => router.push("/admin/posts")}>
               Cancel
             </button>
           </div>

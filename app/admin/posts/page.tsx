@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { fetchBlogItems, formatDate, BlogOverview } from "@/app/utils/blog";
 import Markdown from "react-markdown";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
@@ -9,13 +9,53 @@ import Link from "next/link";
 
 export default function BlogAdmin() {
   const [blogItems, setBlogItems] = useState<BlogOverview[]>([]);
+  const [popupDelete, setPopupDelete] = useState(false);
+  const [deleteId, setDeleteId] = useState(0);
+
   useEffect(() => {
     const fetchItems = async () => {
       const items = await fetchBlogItems();
+      console.log(items);
       setBlogItems(items);
     };
     fetchItems();
   }, []);
+
+  const refDelete = useRef<HTMLDivElement>(null);
+  const handlePopupDelete = (id: number) => {
+    console.log(id);
+    setPopupDelete(!popupDelete);
+    setDeleteId(id);
+    return;
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (refDelete.current && !refDelete.current.contains(event.target as Node)) {
+        setPopupDelete(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleDelete = async (id: number) => {
+    try {
+      await fetch(`/api/delete`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      });
+      window.location.reload();
+    } catch (error) {
+      console.error("Failed to delete blog:", error);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4  px-4 py-8">
       <Link href="/admin/posts/new" className="flex w-fit bg-sky-600 items-center justify-center p-4 rounded-md text-white cursor-pointer font-semibold hover:bg-sky-500">
@@ -42,7 +82,12 @@ export default function BlogAdmin() {
                     <EditNoteRoundedIcon />
                     Edit
                   </button>
-                  <button className="flex w-fit bg-red-600 items-center justify-center px-4 py-2 rounded-md text-white cursor-pointer font-semibold hover:bg-red-500">
+                  <button
+                    onClick={() => {
+                      handlePopupDelete(item.id);
+                    }}
+                    className="flex w-fit bg-red-600 items-center justify-center px-4 py-2 rounded-md text-white cursor-pointer font-semibold hover:bg-red-500"
+                  >
                     <DeleteRoundedIcon />
                     Delete
                   </button>
@@ -51,6 +96,24 @@ export default function BlogAdmin() {
             </div>
           </div>
         ))}
+        {popupDelete && (
+          <div className="fixed top-0 left-0 z-50 w-full h-full bg-black/50 flex justify-center items-center px-4">
+            <div ref={refDelete} className="flex flex-col gap-4 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl shadow p-4 h-1/2 justify-between">
+              <div className="flex flex-col gap-4">
+                <span className="text-xl font-bold text-zinc-900 dark:text-zinc-100">Delete Post</span>
+                <span className="text-base text-zinc-700 dark:text-zinc-300">Apakah kamu yakin ingin menghapus post ini?</span>
+              </div>
+              <div className="flex justify-center gap-2">
+                <button onClick={() => handlePopupDelete(0)} className="flex w-fit bg-sky-600 items-center justify-center px-4 py-2 rounded-md text-white cursor-pointer font-semibold hover:bg-sky-500">
+                  <span className="text-sm font-semibold">Cancel</span>
+                </button>
+                <button onClick={() => handleDelete(deleteId)} className="flex w-fit bg-red-600 items-center justify-center px-4 py-2 rounded-md text-white cursor-pointer font-semibold hover:bg-red-500">
+                  <span className="text-sm font-semibold">Delete</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
