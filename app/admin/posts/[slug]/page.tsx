@@ -172,7 +172,7 @@ function EditPostPage({ id }: { id: string }) {
   );
 }
 
-const postsForm = () => {
+const PostsForm = () => {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   if (id) {
@@ -182,4 +182,4 @@ const postsForm = () => {
   }
 };
 
-export default postsForm;
+export default PostsForm;

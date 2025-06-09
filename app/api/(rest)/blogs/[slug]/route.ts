@@ -11,6 +11,15 @@ export async function GET(req: NextRequest, props: Props) {
 
   const blog = await prisma.blogs.findFirst({
     where: { id: parseInt(id) },
+    select: {
+      id: true,
+      title: true,
+      description: true,
+      content: true,
+      date: true,
+      image: true,
+      updated_at: true,
+    },
   });
 
   if (!blog) {
