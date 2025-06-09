@@ -65,7 +65,7 @@ export default function BlogAdmin() {
           <div key={index} className="w-full">
             <div className="flex flex-col sm:flex-row gap-4 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl shadow p-4 h-full justify-between">
               <div
-                className="aspect-2/1 bg-transparent border border-zinc-200 dark:border-white/10 sm:w-[75%] rounded-lg bg-contain bg-no-repeat bg-center"
+                className="aspect-2/1 bg-transparent border border-zinc-200 dark:border-white/10 sm:w-[75%] rounded-lg bg-cover bg-center"
                 style={{
                   backgroundImage: item.image ? `url(${encodeURI(item.image)})` : "none",
                 }}
