@@ -77,7 +77,7 @@ export default function BlogAdmin() {
                 <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                   <Markdown>{item.title}</Markdown>
                 </span>
-                <span className="text-base text-zinc-700 dark:text-zinc-300 line-clamp-3">
+                <span className="text-base text-zinc-700 dark:text-zinc-300">
                   <Markdown>{item.description}</Markdown>
                 </span>
                 <div className="flex gap-2">
