@@ -7,7 +7,6 @@ import EditNoteRoundedIcon from "@mui/icons-material/EditNoteRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import Link from "next/link";
 
-
 export default function BlogAdmin() {
   const [blogItems, setBlogItems] = useState<BlogOverview[]>([]);
   const [popupDelete, setPopupDelete] = useState(false);
@@ -65,7 +64,12 @@ export default function BlogAdmin() {
         {blogItems.map((item, index) => (
           <div key={index} className="w-full">
             <div className="flex flex-col sm:flex-row gap-4 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl shadow p-4 h-full justify-between">
-              <div className="aspect-6/2 bg-transparent border border-zinc-200 dark:border-white/10 sm:w-[50%] rounded-lg" />
+              <div
+                className="aspect-2/1 bg-transparent border border-zinc-200 dark:border-white/10 sm:w-[75%] rounded-lg bg-contain bg-no-repeat bg-center"
+                style={{
+                  backgroundImage: item.image ? `url(${encodeURI(item.image)})` : "none",
+                }}
+              />
               <div className="flex flex-col w-full gap-2 md:gap-4">
                 <span className="text-sm text-zinc-600 dark:text-zinc-300">
                   <Markdown>{formatDate(item.date)}</Markdown>

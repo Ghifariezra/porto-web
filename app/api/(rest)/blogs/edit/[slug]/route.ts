@@ -14,7 +14,7 @@ export async function POST(req: NextRequest, props: Props) {
     }
 
     const data = await req.json();
-    const { title, description, content, date } = data;
+    const { title, description, content, image, date } = data;
 
     const updatedBlog = await prisma.blogs.update({
       where: { id },
@@ -22,6 +22,7 @@ export async function POST(req: NextRequest, props: Props) {
         title,
         description,
         content,
+        image,
         updated_at: new Date(date),
       },
     });

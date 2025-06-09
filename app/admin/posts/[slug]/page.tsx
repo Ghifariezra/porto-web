@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation";
 function NewPostPage() {
   const router = useRouter();
 
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
@@ -18,6 +19,7 @@ function NewPostPage() {
       title,
       description,
       content,
+      image: imageUrl,
       date: new Date().toISOString(),
     };
 
@@ -38,6 +40,28 @@ function NewPostPage() {
     }
   };
 
+  const handleDrop = async (e: React.DragEvent) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("/api/blogs/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setImageUrl(data.url);
+        alert("Image uploaded successfully!");
+      } else {
+        alert("Image upload failed.");
+      }
+    }
+  };
+
   return (
     <section className="px-4 py-8">
       <div className="max-w-3xl mx-auto p-6 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl">
@@ -53,6 +77,13 @@ function NewPostPage() {
           <label className="flex flex-col">
             <span className="font-semibold">Description</span>
             <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="border border-gray-300 rounded p-2 h-48" required />
+          </label>
+
+          <label className="flex flex-col">
+            <span className="font-semibold">Upload Image (Drag & Drop)</span>
+            <div onDragOver={(e) => e.preventDefault()} onDrop={handleDrop} className="border border-dashed border-gray-400 p-6 text-center rounded cursor-pointer hover:bg-gray-50 dark:hover:bg-white/10">
+              {imageUrl ? <div className="w-full aspect-video bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${encodeURI(imageUrl)})` }} /> : <p className="text-gray-500">Drag and drop an image here</p>}
+            </div>
           </label>
 
           <label className="flex flex-col">
@@ -86,6 +117,7 @@ function NewPostPage() {
 function EditPostPage({ id }: { id: string }) {
   const router = useRouter();
 
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
@@ -94,6 +126,7 @@ function EditPostPage({ id }: { id: string }) {
     const fetchPost = async () => {
       const res = await fetch(`/api/blogs/${id}`);
       const data = await res.json();
+      setImageUrl(data.image);
       setTitle(data.title);
       setDescription(data.description);
       setContent(data.content);
@@ -108,6 +141,7 @@ function EditPostPage({ id }: { id: string }) {
       title,
       description,
       content,
+      image: imageUrl,
       date: new Date().toISOString(),
     };
 
@@ -126,6 +160,28 @@ function EditPostPage({ id }: { id: string }) {
     }
   };
 
+  const handleDrop = async (e: React.DragEvent) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("/api/blogs/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setImageUrl(data.url);
+        alert("Image uploaded successfully!");
+      } else {
+        alert("Image upload failed.");
+      }
+    }
+  };
+
   return (
     <section className="px-4 py-8">
       <div className="max-w-3xl mx-auto p-6 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl">
@@ -141,6 +197,13 @@ function EditPostPage({ id }: { id: string }) {
           <label className="flex flex-col">
             <span className="font-semibold">Description</span>
             <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="border border-gray-300 rounded p-2 h-48" required />
+          </label>
+
+          <label className="flex flex-col">
+            <span className="font-semibold">Upload Image (Drag & Drop)</span>
+            <div onDragOver={(e) => e.preventDefault()} onDrop={handleDrop} className="border border-dashed border-gray-400 p-6 text-center rounded cursor-pointer hover:bg-gray-50 dark:hover:bg-white/10">
+              {imageUrl ? <div className="w-full aspect-video bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${encodeURI(imageUrl)})` }} /> : <p className="text-gray-500">Drag and drop an image here</p>}
+            </div>
           </label>
 
           <label className="flex flex-col">

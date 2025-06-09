@@ -19,9 +19,18 @@ export default function BlogUser() {
       <div className="col-span-2 h-fit">
         {blogItems.slice(0, 1).map((item, index) => (
           <div key={index} className="flex sm:flex-row flex-col gap-4 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl shadow p-4">
-            <div className="aspect-5/2 bg-transparent border border-zinc-200 dark:border-white/10 w-full rounded-lg">
-              <span className="w-full h-full flex justify-center items-center font-bold p-4 text-center">Halaman admin belum tayang... kudanil lagi nyoba install niat dulu.</span>
-            </div>
+            {item.image ? (
+              <div
+                className="aspect-2/1 bg-transparent border border-zinc-200 dark:border-white/10 w-full rounded-lg bg-contain bg-no-repeat bg-center"
+                style={{
+                  backgroundImage: item.image ? `url(${encodeURI(item.image)})` : "none",
+                }}
+              />
+            ) : (
+              <div className="aspect-5/2 bg-transparent border border-zinc-200 dark:border-white/10 w-full rounded-lg">
+                <span className="w-full h-full flex justify-center items-center font-bold p-4 text-center">Halaman admin belum tayang... kudanil lagi nyoba install niat dulu.</span>
+              </div>
+            )}
             <div className="flex flex-col gap-2 md:gap-4 w-fit">
               <span className="text-sm text-zinc-600 dark:text-zinc-300">
                 <Markdown>{formatDate(item.date)}</Markdown>
@@ -39,13 +48,22 @@ export default function BlogUser() {
           </div>
         ))}
       </div>
-      <div className="flex flex-col sm:flex-row col-span-2 gap-4">
+      <div className="grid sm:grid-cols-2 col-span-2 gap-4">
         {blogItems.slice(1).map((item, index) => (
           <div key={index} className="w-full">
             <div className="flex flex-col gap-4 bg-white/90 dark:bg-white/5 border border-zinc-200 dark:border-white/10 backdrop-blur-lg rounded-2xl shadow p-4 h-full justify-between">
-              <div className="aspect-5/2 bg-transparent border border-zinc-200 dark:border-white/10 w-full rounded-lg">
-                <span className="w-full h-full flex justify-center items-center font-bold p-4 text-center">Halaman admin belum tayang... kudanil lagi nyoba install niat dulu.</span>
-              </div>
+              {item.image ? (
+                <div
+                  className="aspect-2/1 bg-transparent border border-zinc-200 dark:border-white/10 w-full rounded-lg bg-contain bg-no-repeat bg-center"
+                  style={{
+                    backgroundImage: item.image ? `url(${encodeURI(item.image)})` : "none",
+                  }}
+                />
+              ) : (
+                <div className="aspect-5/2 bg-transparent border border-zinc-200 dark:border-white/10 w-full rounded-lg">
+                  <span className="w-full h-full flex justify-center items-center font-bold p-4 text-center">Halaman admin belum tayang... kudanil lagi nyoba install niat dulu.</span>
+                </div>
+              )}
               <span className="text-sm text-zinc-600 dark:text-zinc-300">
                 <Markdown>{formatDate(item.date)}</Markdown>
               </span>
