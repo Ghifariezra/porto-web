@@ -6,7 +6,7 @@ import { projectCards } from "@/app/utils/project-cards";
 export default function Header() {
   const pathname = usePathname();
   const projects = projectCards.map((item) => `/projects/${item.slug}`);
-  const pathInteraction = ["/about", ...projects, "/projects", "/blog", "/admin/login"];  
+  const pathInteraction = ["/about", ...projects, "/projects", "/blog", "/admin/login", "/blog/read"];  
 
   if (pathInteraction.includes(pathname)) {
     return (

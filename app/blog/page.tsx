@@ -3,6 +3,7 @@ import Markdown from "react-markdown";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import { useState, useEffect } from "react";
 import { fetchBlogItems, formatDate, BlogOverview } from "@/app/utils/blog";
+import Link from "next/link";
 
 export default function BlogUser() {
   const [blogItems, setBlogItems] = useState<BlogOverview[]>([]);
@@ -35,15 +36,21 @@ export default function BlogUser() {
               <span className="text-sm text-zinc-600 dark:text-zinc-300">
                 <Markdown>{formatDate(item.date)}</Markdown>
               </span>
-              <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+              <span className="text-2xl font-bold">
                 <Markdown>{item.title}</Markdown>
               </span>
               <span className="text-base text-zinc-700 dark:text-zinc-300">
                 <Markdown>{item.description}</Markdown>
               </span>
-              <button className="flex w-fit items-center gap-1 text-zinc-900 dark:text-zinc-100 border border-zinc-200 dark:border-white/10 hover:bg-zinc-200 dark:hover:bg-white/10 hover:text-zinc-800 dark:hover:text-zinc-100 transition duration-300 ease-in-out font-semibold py-2 px-4 rounded-full cursor-pointer">
+              <Link
+                href={{
+                  pathname: `/blog/read`,
+                  query: { id: item.id },
+                }}
+                className="flex w-fit items-center gap-1 border border-zinc-200 dark:border-white/10 hover:bg-zinc-200 dark:hover:bg-white/10 hover:text-zinc-800 dark:hover:text-zinc-100 transition duration-300 ease-in-out font-semibold py-2 px-4 rounded-full cursor-pointer"
+              >
                 Read More <ArrowOutwardRoundedIcon fontSize="small" />
-              </button>
+              </Link>
             </div>
           </div>
         ))}
@@ -67,15 +74,21 @@ export default function BlogUser() {
               <span className="text-sm text-zinc-600 dark:text-zinc-300">
                 <Markdown>{formatDate(item.date)}</Markdown>
               </span>
-              <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+              <span className="text-2xl font-bold">
                 <Markdown>{item.title}</Markdown>
               </span>
               <span className="text-base text-zinc-700 dark:text-zinc-300 line-clamp-3">
                 <Markdown>{item.description}</Markdown>
               </span>
-              <button className="flex w-fit items-center gap-1 text-zinc-900 dark:text-zinc-100 border border-zinc-200 dark:border-white/10 hover:bg-zinc-200 dark:hover:bg-white/10 hover:text-zinc-800 dark:hover:text-zinc-100 transition duration-300 ease-in-out font-semibold py-2 px-4 rounded-full cursor-pointer">
+              <Link
+                href={{
+                  pathname: `/blog/read`,
+                  query: { id: item.id },
+                }}
+                className="flex w-fit items-center gap-1 border border-zinc-200 dark:border-white/10 hover:bg-zinc-200 dark:hover:bg-white/10 hover:text-zinc-800 dark:hover:text-zinc-100 transition duration-300 ease-in-out font-semibold py-2 px-4 rounded-full cursor-pointer"
+              >
                 Read More <ArrowOutwardRoundedIcon fontSize="small" />
-              </button>
+              </Link>
             </div>
           </div>
         ))}
