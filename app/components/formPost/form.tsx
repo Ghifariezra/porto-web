@@ -6,6 +6,7 @@ import BlogAdd from "@/app/utils/blogs/add";
 import BlogUploads from "@/app/utils/blogs/uploads";
 import BlogSlug from "@/app/utils/blogs/blogId";
 import BlogEditSlug from "@/app/utils/blogs/edit";
+import Image from "next/image";
 
 interface Post {
   title: string;
@@ -35,6 +36,7 @@ export function NewPostPage() {
       const res = await BlogUploads(imageFile);
       if (res.ok) {
         const data = await res.json();
+        setImageUrl(data.url);
         uploadedImageUrl = data.url;
       } else {
         alert("Image upload failed.");
@@ -102,7 +104,14 @@ export function NewPostPage() {
             <input type="file" accept="image/*" ref={fileInputRef} className="hidden" onChange={handleFileChange} />
             <div onClick={handleImageClick} onDragOver={(e) => e.preventDefault()} onDrop={handleDrop} className="border border-dashed border-gray-400 p-6 text-center rounded cursor-pointer hover:bg-gray-50 dark:hover:bg-white/10">
               {imageFile ? (
-                <img src={URL.createObjectURL(imageFile)} alt="Preview" className="w-full aspect-video object-contain" />
+                <Image
+                  src={URL.createObjectURL(imageFile)}
+                  alt="Preview"
+                  width={800}
+                  height={450}
+                  className="w-full aspect-video object-contain"
+                  unoptimized // ← Tambahkan ini karena URL.createObjectURL tidak bisa dioptimasi otomatis
+                />
               ) : imageUrl ? (
                 <div className="w-full aspect-video bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${encodeURI(imageUrl)})` }} />
               ) : (

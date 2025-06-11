@@ -19,6 +19,7 @@ export async function DELETE(req: NextRequest, props: Props) {
     // Cari dulu blog-nya untuk ambil path gambar
     const blog = await prisma.blogs.findUnique({
       where: { id },
+      select: { image: true },
     });
 
     if (!blog) {
