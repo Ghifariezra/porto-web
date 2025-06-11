@@ -44,13 +44,14 @@ export default function Blog() {
             <hr />
           </div>
           <span className="text-2xl text-zinc-700 dark:text-zinc-300">
-            {
+            {/* {
               item.content ? (
                 <Markdown>{item.content}</Markdown>
               ) : (
                 <Markdown>{item.description}</Markdown>
               )
-            }
+            } */}
+            <Markdown>{`soon i will update this post`}</Markdown>
           </span>
         </div>
       ))}
