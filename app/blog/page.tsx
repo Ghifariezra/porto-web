@@ -2,7 +2,7 @@
 import Markdown from "react-markdown";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import { useState, useEffect } from "react";
-import { fetchBlogItems, formatDate, BlogOverview } from "@/app/utils/blog";
+import { fetchBlogItems, formatDate, BlogOverview } from "@/app/utils/blogs/blog";
 import Link from "next/link";
 
 export default function BlogUser() {

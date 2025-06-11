@@ -1,11 +1,12 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { fetchBlogItems, formatDate, BlogOverview } from "@/app/utils/blog";
+import { fetchBlogItems, formatDate, BlogOverview } from "@/app/utils/blogs/blog";
 import Markdown from "react-markdown";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import EditNoteRoundedIcon from "@mui/icons-material/EditNoteRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import Link from "next/link";
+import BlogDelete from "@/app/utils/blogs/delete";
 
 export default function BlogAdmin() {
   const [blogItems, setBlogItems] = useState<BlogOverview[]>([]);
@@ -41,17 +42,7 @@ export default function BlogAdmin() {
   }, []);
 
   const handleDelete = async (id: number) => {
-    try {
-      await fetch(`/api/blogs/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      window.location.reload();
-    } catch (error) {
-      console.error("Failed to delete blog:", error);
-    }
+    await BlogDelete(id); 
   };
 
   return (
