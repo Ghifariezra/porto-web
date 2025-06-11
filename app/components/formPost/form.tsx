@@ -60,14 +60,13 @@ export function NewPostPage() {
       alert("Failed to add new post");
     }
   };
-  
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       setImageFile(file); // ← hanya simpan filenya
     }
-  };  
+  };
 
   const handleImageClick = () => {
     fileInputRef.current?.click();
@@ -110,7 +109,7 @@ export function NewPostPage() {
                   width={800}
                   height={450}
                   className="w-full aspect-video object-contain"
-                  unoptimized // ← Tambahkan ini karena URL.createObjectURL tidak bisa dioptimasi otomatis
+                  unoptimized 
                 />
               ) : imageUrl ? (
                 <div className="w-full aspect-video bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${encodeURI(imageUrl)})` }} />
