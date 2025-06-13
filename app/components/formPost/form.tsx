@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import Markdown from "react-markdown";
 import BlogAdd from "@/app/utils/blogs/add";
 import BlogUploads from "@/app/utils/blogs/uploads";
 import BlogSlug from "@/app/utils/blogs/blogId";
 import BlogEditSlug from "@/app/utils/blogs/edit";
 import Image from "next/image";
+import RichEditor from "@/app/components/text-editor/rich-editor";
 
 interface Post {
   title: string;
@@ -103,14 +103,7 @@ export function NewPostPage() {
             <input type="file" accept="image/*" ref={fileInputRef} className="hidden" onChange={handleFileChange} />
             <div onClick={handleImageClick} onDragOver={(e) => e.preventDefault()} onDrop={handleDrop} className="border border-dashed border-gray-400 p-6 text-center rounded cursor-pointer hover:bg-gray-50 dark:hover:bg-white/10">
               {imageFile ? (
-                <Image
-                  src={URL.createObjectURL(imageFile)}
-                  alt="Preview"
-                  width={800}
-                  height={450}
-                  className="w-full aspect-video object-contain"
-                  unoptimized 
-                />
+                <Image src={URL.createObjectURL(imageFile)} alt="Preview" width={800} height={450} className="w-full aspect-video object-contain" unoptimized />
               ) : imageUrl ? (
                 <div className="w-full aspect-video bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${encodeURI(imageUrl)})` }} />
               ) : (
@@ -119,10 +112,9 @@ export function NewPostPage() {
             </div>
           </label>
 
-          <label className="flex flex-col">
-            <span className="font-semibold">Content (Markdown supported)</span>
-            <textarea value={content} onChange={(e) => setContent(e.target.value)} className="border border-gray-300 rounded p-2 h-48" required />
-          </label>
+          <div id="editor">
+            <RichEditor content={content} onChange={setContent} />
+          </div>
 
           <div className="flex gap-4">
             <button type="submit" className="bg-sky-600 hover:bg-sky-500 text-white font-semibold py-2 px-4 rounded cursor-pointer">
@@ -133,16 +125,6 @@ export function NewPostPage() {
             </button>
           </div>
         </form>
-
-        {/* Preview markdown (optional) */}
-        {content && (
-          <div className="mt-10">
-            <h2 className="text-xl font-bold">Live Preview</h2>
-            <div className="prose dark:prose-invert max-w-none">
-              <Markdown>{content}</Markdown>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
@@ -245,10 +227,9 @@ export function EditPostPage({ id }: { id: string }) {
             </div>
           </label>
 
-          <label className="flex flex-col">
-            <span className="font-semibold">Content (Markdown supported)</span>
-            <textarea value={content || ""} onChange={(e) => setContent(e.target.value)} className="border border-gray-300 rounded p-2 h-48" required />
-          </label>
+          <div id="editor">
+            <RichEditor content={content} onChange={setContent} />
+          </div>
 
           <div className="flex gap-4">
             <button type="submit" className="bg-sky-600 hover:bg-sky-500 text-white font-semibold py-2 px-4 rounded cursor-pointer">
@@ -259,16 +240,6 @@ export function EditPostPage({ id }: { id: string }) {
             </button>
           </div>
         </form>
-
-        {/* Preview markdown (optional) */}
-        {content && (
-          <div className="mt-10">
-            <h2 className="text-xl font-bold">Live Preview</h2>
-            <div className="prose dark:prose-invert max-w-none">
-              <Markdown>{content}</Markdown>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );

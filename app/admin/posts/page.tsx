@@ -61,14 +61,14 @@ export default function BlogAdmin() {
                   backgroundImage: item.image ? `url(${encodeURI(item.image)})` : "none",
                 }}
               />
-              <div className="flex flex-col w-full gap-2 md:gap-4">
+              <div className="flex flex-col justify-between w-full gap-2 md:gap-4">
                 <span className="text-sm text-zinc-600 dark:text-zinc-300">
                   <Markdown>{formatDate(item.date)}</Markdown>
                 </span>
                 <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                   <Markdown>{item.title}</Markdown>
                 </span>
-                <span className="text-base text-zinc-700 dark:text-zinc-300">
+                <span className="text-base text-zinc-700 dark:text-zinc-300 line-clamp-3">
                   <Markdown>{item.description}</Markdown>
                 </span>
                 <div className="flex gap-2">

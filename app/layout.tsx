@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { Besley } from "next/font/google";
 import "./globals.css";
+import "highlight.js/styles/github-dark.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],

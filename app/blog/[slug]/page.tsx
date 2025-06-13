@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
 export default function Blog() {
-
   const searchParams = useSearchParams();
   const id: string | null = searchParams.get("id");
 
@@ -44,14 +43,8 @@ export default function Blog() {
             <hr />
           </div>
           <span className="text-2xl text-zinc-700 dark:text-zinc-300">
-            {/* {
-              item.content ? (
-                <Markdown>{item.content}</Markdown>
-              ) : (
-                <Markdown>{item.description}</Markdown>
-              )
-            } */}
-            <Markdown>{`soon i will update this post`}</Markdown>
+            <span className="text-2xl text-zinc-700 dark:text-zinc-300">{item.content ? <div className="prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: item.content }} /> : <Markdown>{item.description}</Markdown>}</span>
+            {/* <Markdown>{`soon i will update this post`}</Markdown> */}
           </span>
         </div>
       ))}
