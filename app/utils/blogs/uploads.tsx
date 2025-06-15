@@ -4,7 +4,7 @@ export default async function BlogUploads(file: File | null) {
     formData.append("file", file);
   }
 
-  const res = await fetch("/api/blogs/upload", {
+  const res = await fetch(`${process.env.BASE_URL}/api/blogs/upload`, {
     method: "POST",
     body: formData,
   });
