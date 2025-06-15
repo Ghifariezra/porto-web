@@ -1,14 +1,10 @@
-"use client";
-import { useSearchParams } from "next/navigation";
-import { NewPostPage, EditPostPage } from "@/app/components/formPost/form";
-const PostsForm = () => {
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
-  if (id) {
-    return <EditPostPage id={id} />;
-  } else {
-    return <NewPostPage />;
-  }
-};
+// import { NewPostPage, EditPostPage } from "@/app/components/formPost/form";
+import EditPostPage from "@/app/components/formPost/editPost";
+import NewPostPage from "@/app/components/formPost/newPost";
 
-export default PostsForm;
+export default async function PostsForm({ searchParams }: { searchParams: Promise<{ id?: string }> }) {
+  const resolvedSearchParams = await searchParams;
+  const id = resolvedSearchParams?.id;
+
+  return id ? <EditPostPage id={id} /> : <NewPostPage />;
+}
