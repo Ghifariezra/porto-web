@@ -18,7 +18,7 @@ export const formatDate = (dateStr: string) =>
 export const fetchBlogItems = async () => {
   try {
     const response = await fetch(
-        `/api/blogs`,
+        `${process.env.BASE_URL}/api/blogs`,
         {
             method: "GET",
             // credentials: "include",
