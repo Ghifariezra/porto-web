@@ -18,7 +18,7 @@ export const formatDate = (dateStr: string) =>
 export const fetchBlogItems = async () => {
   try {
     const response = await fetch(
-        `${process.env.BASE_URL}/api/blogs`,
+        `/api/blogs`,
         {
             method: "GET",
             // credentials: "include",
@@ -29,5 +29,6 @@ export const fetchBlogItems = async () => {
     return blogs;
   } catch (error) {
     console.error("Error fetching blog items:", error);
+    return [];
   }
 };

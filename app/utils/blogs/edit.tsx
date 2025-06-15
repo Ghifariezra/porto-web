@@ -7,7 +7,7 @@ interface FormEditSlug {
 }
 
 export default async function BlogEditSlug(id: number, newPost: FormEditSlug) {
-  const res = await fetch(`${process.env.BASE_URL}/api/blogs/edit/${id}`, {
+  const res = await fetch(`/api/blogs/edit/${id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

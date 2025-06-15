@@ -7,7 +7,7 @@ interface BlogAdd {
 }
 
 export default async function BlogAdd(Post: BlogAdd) {
-  const res = await fetch(`${process.env.BASE_URL}/api/blogs/add`, {
+  const res = await fetch(`/api/blogs/add`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
