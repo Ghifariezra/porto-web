@@ -46,7 +46,7 @@ const icon = {
 
 export const projectCards: ProjectCard[] = [
   {
-    demo: null,
+    demo: "https://kapita-konsul-sinergi.vercel.app/",
     slug: "k2s",
     head: "Kapita Konsul Sinergi – Company Profile Website",
     status: "Collaborative",
