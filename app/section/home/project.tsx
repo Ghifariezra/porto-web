@@ -2,6 +2,7 @@
 import { projectCards } from "@/app/utils/project-cards";
 import { useState, useEffect, useRef } from "react";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import Link from "next/link";
 
 export default function Projects() {
@@ -51,7 +52,7 @@ export default function Projects() {
                       <div key={`${item.title}-icon-${i}`}>{icon}</div>
                     ))}
                   </div>
-                  <div className="flex justify-center">
+                  <div className="flex gap-4 justify-center">
                     <Link
                       href={`/projects/${item.slug}`}
                       className="inline-flex justify-center items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-100 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:border-transparent transition-colors duration-300"
@@ -59,6 +60,16 @@ export default function Projects() {
                       <span>View Project</span>
                       <ArrowOutwardRoundedIcon fontSize="small" />
                     </Link>
+                    {item.demo && (
+                      <Link
+                        href={item.demo}
+                        target="_blank"
+                        className="inline-flex justify-center items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-100 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:border-transparent transition-colors duration-300"
+                      >
+                        <span>View Demo</span>
+                        <OpenInNewIcon fontSize="small" />
+                      </Link>
+                    )}
                   </div>
                 </div>
                 <div
@@ -86,7 +97,7 @@ export default function Projects() {
                       <div key={`${item.title}-icon-${i}`}>{icon}</div>
                     ))}
                   </div>
-                  <div className="flex justify-center">
+                  <div className="flex gap-4 justify-center">
                     <Link
                       href={`/projects/${item.slug}`}
                       className="inline-flex justify-center items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-100 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:border-transparent transition-colors duration-300"
@@ -94,6 +105,16 @@ export default function Projects() {
                       <span>View Project</span>
                       <ArrowOutwardRoundedIcon fontSize="small" />
                     </Link>
+                    {item.demo && (
+                      <Link
+                        href={item.demo}
+                        target="_blank"
+                        className="inline-flex justify-center items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-100 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:border-transparent transition-colors duration-300"
+                      >
+                        <span>View Demo</span>
+                        <OpenInNewIcon fontSize="small" />
+                      </Link>
+                    )}
                   </div>
                 </div>
                 <div
