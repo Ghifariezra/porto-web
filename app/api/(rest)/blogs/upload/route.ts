@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 export async function POST(req: Request) {
-    console.log(req);
+  console.log(req);
   const data = await req.formData();
   const file: File | null = data.get("file") as unknown as File;
 
@@ -20,5 +20,5 @@ export async function POST(req: Request) {
 
   fs.writeFileSync(filePath, buffer);
 
-  return NextResponse.json({ url: `/uploads/${filename}` });
+  return NextResponse.json({ link: `/uploads/${filename}` });
 }

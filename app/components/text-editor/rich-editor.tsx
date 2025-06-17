@@ -29,6 +29,10 @@ type RichEditorProps = {
 const froalaConfig = {
   placeholderText: "Edit Your Content Here!",
   charCounterCount: false,
+  imageUpload: true,
+  imageUploadURL: "/api/blogs/upload",
+  imageUploadMethod: "POST",
+  imageAllowedTypes: ["jpeg", "jpg", "png", "gif", "webp"],
   toolbarButtons: {
     moreText: {
       buttons: ["bold", "italic", "underline", "strikeThrough", "subscript", "superscript", "fontFamily", "fontSize", "textColor", "backgroundColor", "inlineClass", "inlineStyle", "clearFormatting"],
