@@ -4,7 +4,7 @@ import { FaReact, FaPython, FaGithub, FaRegSnowflake, FaDocker } from "react-ico
 import { BiLogoPostgresql, BiLogoTypescript } from "react-icons/bi";
 
 export interface ProjectCard {
-  demo?: string  | null;
+  demo?: string | null;
   slug: string;
   head?: string;
   status: string;
@@ -17,7 +17,7 @@ export interface ProjectCard {
   linkedinPartners?: string[] | null;
   description: string;
   image: string;
-  icons: React.ReactNode[] | string[];
+  icons: React.ReactNode[];
 }
 
 const yearNow = new Date().getFullYear();
@@ -47,23 +47,15 @@ const iconMap: Record<string, React.ReactNode> = {
 
 // 2. Fetch dari API dan ubah icons menjadi React element
 export async function getProjectCards(): Promise<ProjectCard[]> {
-  const res = await fetch("/api/projects", { cache: "no-store" });
-  const rawData = await res.json();
+  type RawProjectCard = Omit<ProjectCard, "icons"> & {
+    icons: string[]; // karena icons awalnya berupa string array dari API
+  };
 
-  const projectCards: ProjectCard[] = rawData.map((item: any) => ({
-    demo: item.demo,
-    slug: item.slug,
-    head: item.head,
-    status: item.status,
-    title: item.title,
-    years: item.years,
-    partners: item.partners,
-    role: item.role,
-    team: item.team,
-    linkedinTeams: item.linkedinTeams,
-    linkedinPartners: item.linkedinPartners,
-    description: item.description,
-    image: item.image,
+  const res = await fetch("/api/projects", { cache: "no-store" });
+  const rawData: RawProjectCard[] = await res.json();
+
+  const projectCards: ProjectCard[] = rawData.map((item) => ({
+    ...item,
     icons: item.icons.map((name: string) => iconMap[name] ?? null).filter(Boolean),
   }));
 
