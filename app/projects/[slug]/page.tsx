@@ -4,11 +4,11 @@ import Avatar from "@mui/material/Avatar";
 import Link from "next/link";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
-export default async function Project({ params }: Props) {
-  const { slug } = await params;
+export default async function Project(props : Props) {
+  const { slug } = await props.params;
   const projectCards = await getProjectCards();
   const project = projectCards.find((item) => item.slug === slug);
 
