@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";
-import prisma from "@/app/lib/prisma";
+import prisma from "@/app/prismaClient/prisma";
 
 const secret = new TextEncoder().encode(process.env.JWT_SECRET || "supersecret");
 

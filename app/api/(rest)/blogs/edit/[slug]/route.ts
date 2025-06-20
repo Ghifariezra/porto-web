@@ -1,4 +1,4 @@
-import prisma from "@/app/lib/prisma";
+import prisma from "@/app/prismaClient/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 type Props = {
