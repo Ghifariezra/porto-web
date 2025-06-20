@@ -1,5 +1,5 @@
-import Hero from "@/app/section/home/hero";
-import Projects from "@/app/section/home/project";
+import Hero from "@/app/components/hero";
+import Projects from "@/app/serverComp/project";
 export default function Home() {
   return (
     <main>

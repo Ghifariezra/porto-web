@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import Navbar from "@/app/components/navbar";
+import Navbar from "@/app/components/navbar/navbar";
 
 export default function Header() {
   const pathname = usePathname();

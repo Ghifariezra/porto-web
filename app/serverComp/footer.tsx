@@ -1,4 +1,4 @@
-import Contact from "@/app/section/contact";
+import Contact from "@/app/components/contact";
 
 export default function Footer() {
   return (

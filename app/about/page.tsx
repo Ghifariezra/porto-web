@@ -1,6 +1,6 @@
-import HeroAbout from "@/app/section/about/hero";
-import Experience from "@/app/section/about/experience";
-import Education from "@/app/section/about/education";
+import HeroAbout from "@/app/components/about/hero";
+import Experience from "@/app/components/about/experience";
+import Education from "@/app/components/about/education";
 
 export default function About() {
   return (

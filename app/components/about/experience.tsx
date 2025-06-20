@@ -1,3 +1,4 @@
+"use client";
 import { experienceItems } from "@/app/utils/experience";
 
 export default function Experience() {

@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import NavbarAdmin from "@/app/components/navbarAdmin";
+import NavbarAdmin from "@/app/components/navbar/navbarAdmin";
 
 export default function HeaderAdmin() {
   const pathname = usePathname();

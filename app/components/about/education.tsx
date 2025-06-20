@@ -1,3 +1,4 @@
+"use client";
 import { educationItems } from "@/app/utils/education";
 
 export default function Education() {
