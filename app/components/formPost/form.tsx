@@ -6,7 +6,7 @@ import BlogUploads from "@/app/utils/blogs/uploads";
 import BlogSlug from "@/app/utils/blogs/blogId";
 import BlogEditSlug from "@/app/utils/blogs/edit";
 import Image from "next/image";
-import RichEditor from "@/app/components/text-editor/rich-editor";
+import RichEditor from "@/app/components/richEditor";
 
 interface Post {
   title: string;

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import BlogAdd from "@/app/utils/blogs/add";
 import BlogUploads from "@/app/utils/blogs/uploads";
-import RichEditor from "@/app/components/text-editor/rich-editor";
+import RichEditor from "@/app/components/richEditor";
 
 interface Post {
   title: string;

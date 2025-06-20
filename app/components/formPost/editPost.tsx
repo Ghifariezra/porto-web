@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import BlogSlug from "@/app/utils/blogs/blogId";
 import BlogEditSlug from "@/app/utils/blogs/edit";
 import BlogUploads from "@/app/utils/blogs/uploads";
-import RichEditor from "@/app/components/text-editor/rich-editor";
+import RichEditor from "@/app/components/richEditor";
 
 interface Post {
   title: string;
