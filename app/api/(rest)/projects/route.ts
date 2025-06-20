@@ -3,7 +3,17 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   const projects = await prisma.projects.findMany({
-    include: {
+    select: {
+      id: true,
+      demo: true,
+      slug: true,
+      head: true,
+      status: true,
+      title: true,
+      years: true,
+      role: true,
+      description: true,
+      image: true,
       users: {
         select: { username: true },
       },
@@ -28,7 +38,6 @@ export async function GET() {
     },
   });
 
-  // Format ke dalam struktur ProjectCard
   const formatted = projects.map((project) => ({
     demo: project.demo,
     slug: project.slug,
