@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "reset": "powershell -Command \"Remove-Item -Recurse -Force node_modules, pnpm-lock.yaml; pnpm install\"",
-    "push-git": "powershell -Command \"git checkout deploy; git add .; git commit -m 'repair package'; git push origin deploy; git checkout main; git merge deploy; git push origin main\""
+    "push-git": "powershell -Command \"git checkout deploy; git add .; git commit -m 'add speed insights'; git push origin deploy; git checkout main; git merge deploy; git push origin main\""
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -20,6 +20,7 @@
     "@prisma/extension-accelerate": "^2.0.1",
     "@tailwindcss/typography": "^0.5.16",
     "@types/jsonwebtoken": "^9.0.9",
+    "@vercel/speed-insights": "^1.2.0",
     "dompurify": "^3.2.6",
     "font-awesome": "^4.7.0",
     "froala-editor": "^4.5.2",
