@@ -1,6 +1,6 @@
 import { 
-  projectCards, 
-  getProjectCards
+  projectCards,
+  // getProjectCards,
  } from "@/app/utils/project-cards";
 import NotFound from "@/app/not-found";
 import Avatar from "@mui/material/Avatar";
@@ -12,9 +12,9 @@ type Props = {
 
 export default async function Project(props: Props) {
   const params = await props.params;
-  // const project = projectCards.find((item) => item.slug === params.slug);
-  const project = await getProjectCards()
-    .then((data) => data.find((item) => item.slug === params.slug));
+  const project = projectCards.find((item) => item.slug === params.slug);
+  // const project = await getProjectCards()
+  //   .then((data) => data.find((item) => item.slug === params.slug));
 
   if (!project) return <NotFound />;
 
