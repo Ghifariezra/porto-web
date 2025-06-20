@@ -6,7 +6,6 @@ const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 export async function middleware(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
 
-  // Belum login? redirect ke /admin/login
   if (!token) {
     return NextResponse.redirect(new URL("/admin/login", req.url));
   }
@@ -29,6 +28,5 @@ export async function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     "/admin/:path((?!login).*)",
-    // "/api/blogs/:path*", // ✅ Tambahkan proteksi ke API
   ],
 };
