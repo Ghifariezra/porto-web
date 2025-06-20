@@ -1,4 +1,4 @@
-import { getProjectCards } from "@/app/utils/project-cards";
+import { getProjectCards } from "@/app/utils/projects/project-cards";
 import NotFound from "@/app/not-found";
 import Avatar from "@mui/material/Avatar";
 import Link from "next/link";

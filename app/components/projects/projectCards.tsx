@@ -1,7 +1,7 @@
 "use client";
 import { 
   ProjectCard
- } from "@/app/utils/project-cards";
+ } from "@/app/utils/projects/project-cards";
 import { useState, useEffect, useRef } from "react";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
