@@ -17,7 +17,7 @@ export interface ProjectCard {
   linkedinPartners?: string[] | null;
   description: string;
   image: string;
-  icons: React.ReactNode[];
+  icons: React.ReactNode[] | string[];
 }
 
 const yearNow = new Date().getFullYear();
