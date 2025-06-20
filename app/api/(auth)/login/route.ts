@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 import { SignJWT } from "jose";
 import { cookies } from "next/headers";
 
-const secret = new TextEncoder().encode(process.env.JWT_SECRET || "supersecret");
+const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
 export async function POST(req: Request) {
   const { username, password } = await req.json();
