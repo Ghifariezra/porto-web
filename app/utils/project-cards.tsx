@@ -24,7 +24,7 @@ export async function getProjectCards(): Promise<ProjectCard[]> {
   };
 
   const res = await fetch(`${process.env.BASE_URL}/api/projects`, {
-    cache: "no-store", // <- jika ingin 100% fresh setiap SSR
+    method: "GET",
   });
 
   if (!res.ok) throw new Error("Failed to fetch project cards");
