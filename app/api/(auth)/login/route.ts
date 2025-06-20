@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/app/prismaClient/prisma";
+import prisma from "@/prismaClient/prisma";
 import { NextResponse } from "next/server";
 import { SignJWT } from "jose";
 import { cookies } from "next/headers";
