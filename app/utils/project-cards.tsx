@@ -23,9 +23,7 @@ export async function getProjectCards(): Promise<ProjectCard[]> {
     icons: string[];
   };
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
-
-  const res = await fetch(`${baseUrl}/api/projects`, {
+  const res = await fetch(`${process.env.BASE_URL}/api/projects`, {
     cache: "no-store", // <- jika ingin 100% fresh setiap SSR
   });
 
