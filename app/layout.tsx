@@ -2,7 +2,7 @@ import { ThemeProvider } from "@/app/components/theme-provider";
 import Header from "@/app/components/header/header";
 import HeaderAdmin from "@/app/components/header/headerAdmin";
 import { headers } from "next/headers";
-import Footer from "@/app/serverComp/footer";
+import Footer from "@/app/components/footer/footer";
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { Besley } from "next/font/google";

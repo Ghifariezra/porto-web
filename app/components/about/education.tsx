@@ -1,5 +1,5 @@
 "use client";
-import { educationItems } from "@/app/utils/education";
+import { educationItems } from "@/app/utils/background/education";
 
 export default function Education() {
   return (

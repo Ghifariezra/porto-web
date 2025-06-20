@@ -1,5 +1,5 @@
 import { getProjectCards } from "@/app/utils/project-cards";
-import ProjectCards from "@/app/components/projectCards";
+import ProjectCards from "@/app/components/projects/projectCards";
 
 export default async function ProjectsPage() {
   const projectCards = await getProjectCards();

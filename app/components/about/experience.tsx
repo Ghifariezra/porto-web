@@ -1,5 +1,5 @@
 "use client";
-import { experienceItems } from "@/app/utils/experience";
+import { experienceItems } from "@/app/utils/background/experience";
 
 export default function Experience() {
   return (
