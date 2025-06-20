@@ -1,7 +1,4 @@
-import { RiJavascriptFill, RiTailwindCssFill, RiNextjsFill } from "react-icons/ri";
-import { SiVite, SiLooker, SiPandas, SiDbt, SiApacheairflow, SiNestjs, SiSwagger, SiPrisma, SiJsonwebtokens } from "react-icons/si";
-import { FaReact, FaPython, FaGithub, FaRegSnowflake, FaDocker } from "react-icons/fa";
-import { BiLogoPostgresql, BiLogoTypescript } from "react-icons/bi";
+import { iconMap } from "@/app/utils/projects/projectIcons";
 
 export interface ProjectCard {
   demo?: string | null;
@@ -17,150 +14,30 @@ export interface ProjectCard {
   linkedinPartners?: string[] | null;
   description: string;
   image: string;
+  iconNames: string[];
   icons: React.ReactNode[];
 }
 
-const yearNow = new Date().getFullYear();
-
-// 1. Map icon_name string → React Element
-const iconMap: Record<string, React.ReactNode> = {
-  jsonwebtoken: <SiJsonwebtokens className="w-6 h-6" />,
-  prisma: <SiPrisma className="w-6 h-6" />,
-  swagger: <SiSwagger className="w-6 h-6" />,
-  nestjs: <SiNestjs className="w-6 h-6" />,
-  typescript: <BiLogoTypescript className="w-6 h-6" />,
-  react: <FaReact className="w-6 h-6" />,
-  tailwind: <RiTailwindCssFill className="w-6 h-6" />,
-  nextjs: <RiNextjsFill className="w-6 h-6" />,
-  javascript: <RiJavascriptFill className="w-6 h-6" />,
-  vite: <SiVite className="w-6 h-6" />,
-  python: <FaPython className="w-6 h-6" />,
-  postgresql: <BiLogoPostgresql className="w-6 h-6" />,
-  looker: <SiLooker className="w-6 h-6" />,
-  github: <FaGithub className="w-6 h-6" />,
-  pandas: <SiPandas className="w-6 h-6" />,
-  snowflake: <FaRegSnowflake className="w-6 h-6" />,
-  dbt: <SiDbt className="w-6 h-6" />,
-  airflow: <SiApacheairflow className="w-6 h-6" />,
-  docker: <FaDocker className="w-6 h-6" />,
-};
-
-// 2. Fetch dari API dan ubah icons menjadi React element
 export async function getProjectCards(): Promise<ProjectCard[]> {
   type RawProjectCard = Omit<ProjectCard, "icons"> & {
-    icons: string[]; // karena icons awalnya berupa string array dari API
+    icons: string[];
   };
 
-  const res = await fetch("/api/projects", { cache: "no-store" });
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
+
+  const res = await fetch(`${baseUrl}/api/projects`, {
+    cache: "no-store", // <- jika ingin 100% fresh setiap SSR
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch project cards");
+
   const rawData: RawProjectCard[] = await res.json();
 
   const projectCards: ProjectCard[] = rawData.map((item) => ({
     ...item,
+    iconNames: item.icons, // simpan string-nya juga
     icons: item.icons.map((name: string) => iconMap[name] ?? null).filter(Boolean),
   }));
 
   return projectCards;
 }
-
-export const projectCards: ProjectCard[] = [
-  {
-    demo: "https://kapita-konsul-sinergi.vercel.app/",
-    slug: "k2s",
-    head: "Kapita Konsul Sinergi – Company Profile Website",
-    status: "Collaborative",
-    title: "Company Website",
-    years: `${yearNow}`,
-    partners: ["Muhammad Fadli Syukur"],
-    role: "UI/UX Designer",
-    linkedinPartners: ["https://www.linkedin.com/in/muhammadfadlisyukur/"],
-    description:
-      "A professional company website for PT. Kapita Konsul Sinergi, designed to highlight their consulting services in engineering, K3, and environmental certifications. Features include service overviews, team introduction, consultation call-to-action, and a clean, responsive layout. Built collaboratively using modern frontend technologies to support business growth and credibility.",
-    image: "/projects/k2s.png",
-    icons: [iconMap.typescript, iconMap.react, iconMap.tailwind, iconMap.nextjs],
-  },
-  {
-    demo: "https://nestjs-news-api-production.up.railway.app/",
-    slug: "news-api",
-    head: "NestJS News API",
-    status: "Personal",
-    title: "RESTful News API",
-    years: `${yearNow}`,
-    partners: null,
-    role: null,
-    team: null,
-    linkedinTeams: null,
-    linkedinPartners: null,
-    description:
-      "A secure RESTful API built with NestJS for fetching categorized news articles. Includes user authentication with JWT, Prisma ORM integration, PostgreSQL, and Swagger documentation. Designed as a backend-only service to power frontend clients or mobile apps with protected access to news data.",
-    image: "/projects/news-api.png",
-    icons: [iconMap.jsonwebtoken, iconMap.typescript, iconMap.nestjs, iconMap.postgresql, iconMap.swagger, iconMap.prisma],
-  },
-  {
-    demo: "https://ghifariezraramadhan.netlify.app/",
-    slug: "porto",
-    head: "Personal Portfolio Website – Showcasing Tech Generalist Skills",
-    status: "Pesonal",
-    title: "Portofolio Web",
-    years: `${yearNow}`,
-    partners: null,
-    role: null,
-    team: null,
-    linkedinTeams: null,
-    linkedinPartners: null,
-    description:
-      "A personal portfolio website showcasing your professional profile as a Tech Generalist with a minimalist and responsive design. Features intuitive navigation, contact information, tech stack display, and 3D avatar. Built using modern web technologies to reflect your skills and experience in web development.",
-    image: "/projects/porto1.0.png",
-    icons: [iconMap.javascript, iconMap.tailwind, iconMap.react, iconMap.vite],
-  },
-  {
-    demo: null,
-    slug: "etl",
-    head: "OLTP Data Pipeline with ETL & Visualization",
-    status: "Collaborative",
-    title: "Extract, Transform, Load",
-    years: `${yearNow - 1}`,
-    partners: [""],
-    role: "",
-    team: ["Fine Oktafiani", "Giovani Govert"],
-    linkedinTeams: ["https://www.linkedin.com/in/fineoktafiani/", "https://www.linkedin.com/in/giovanni-govert/"],
-    linkedinPartners: [""],
-    description:
-      "A data pipeline implementing the Extract-Transform-Load (ETL) process to migrate data from an OLTP system to a Data Warehouse. Built using Python and PostgreSQL, the pipeline cleans, transforms, and loads data to enable efficient analysis. Includes interactive visualizations to support data-driven insights and reporting.",
-    image: "/projects/ETL.png",
-    icons: [iconMap.python, iconMap.postgresql, iconMap.looker],
-  },
-  {
-    demo: null,
-    slug: "elt",
-    head: "ELT Pipeline for Northwind: Snowflake, dbt & Looker Studio",
-    status: "Collaborative",
-    title: "Extract, Load, Transform",
-    years: `${yearNow - 1}`,
-    partners: [""],
-    role: "",
-    team: ["Fine Oktafiani", "Giovani Govert"],
-    linkedinTeams: ["https://www.linkedin.com/in/fineoktafiani/", "https://www.linkedin.com/in/giovanni-govert/"],
-    linkedinPartners: [""],
-    description:
-      "A collaborative ELT project for building a modern data warehouse using the Northwind dataset sourced from GitHub CSVs. The pipeline extracts data, loads it into Snowflake, and transforms it using dbt to create curated data marts. Final insights are visualized in Looker Studio, enabling business analysis such as top-performing employees, supplier revenue, and product category trends. Tools used include Python, dbt, Snowflake, and Looker Studio.",
-    image: "/projects/ELT.png",
-    icons: [iconMap.github, iconMap.pandas, iconMap.snowflake, iconMap.dbt, iconMap.looker],
-  },
-  {
-    demo: null,
-    slug: "batch-processing",
-    head: "Orchestrated Batch ELT Pipeline Using Airflow & dbt",
-    status: "Collaborative",
-    title: "Batch Processing",
-    years: `${yearNow - 1}`,
-    partners: [""],
-    role: "",
-    team: ["Fine Oktafiani", "Giovani Govert"],
-    linkedinTeams: ["https://www.linkedin.com/in/fineoktafiani/", "https://www.linkedin.com/in/giovanni-govert/"],
-    linkedinPartners: [""],
-    description:
-      "A collaborative ELT batch processing pipeline that automates daily data workflows using Apache Airflow. The system extracts data, loads it into Snowflake, and transforms it with dbt to populate a data mart for analytics. Task dependencies are managed using Airflow DAGs with scheduled runs at 12 PM. The entire pipeline is containerized with Docker and utilizes PostgreSQL for intermediate storage. Final results are visualized using Looker Studio to support business decision-making. This project focuses on scalability, automation, and maintainability using modern cloud-native tools.",
-    image: "/projects/batch-processing.jpg",
-    icons: [iconMap.postgresql, iconMap.docker, iconMap.airflow, iconMap.pandas, iconMap.snowflake, iconMap.dbt, iconMap.looker],
-  },
-];

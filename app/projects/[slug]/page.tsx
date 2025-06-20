@@ -1,20 +1,16 @@
-import { 
-  projectCards,
-  // getProjectCards,
- } from "@/app/utils/project-cards";
+import { getProjectCards } from "@/app/utils/project-cards";
 import NotFound from "@/app/not-found";
 import Avatar from "@mui/material/Avatar";
 import Link from "next/link";
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 };
 
-export default async function Project(props: Props) {
-  const params = await props.params;
-  const project = projectCards.find((item) => item.slug === params.slug);
-  // const project = await getProjectCards()
-  //   .then((data) => data.find((item) => item.slug === params.slug));
+export default async function Project({ params }: Props) {
+  const { slug } = await params;
+  const projectCards = await getProjectCards();
+  const project = projectCards.find((item) => item.slug === slug);
 
   if (!project) return <NotFound />;
 
@@ -25,6 +21,7 @@ export default async function Project(props: Props) {
         <div className="w-full flex flex-col justify-between gap-2">
           <h1 className="font-semibold text-[11px] sm:text-base w-fit px-3 py-1 rounded-full border dark:border-none dark:bg-white text-zinc-800">{project.title}</h1>
           <h2 className="text-2xl sm:text-3xl font-bold">{project.head}</h2>
+
           {project.partners && project.role && project.linkedinPartners ? (
             <>
               <div className="flex flex-col gap-2 mt-2">
@@ -33,21 +30,12 @@ export default async function Project(props: Props) {
                   <ul className="px-4 font-semibold">
                     {project.partners.map((item: string, index: number) => (
                       <li key={index}>
-                        {project.linkedinPartners ? (
-                          <Link href={project.linkedinPartners[index]} className="flex items-center gap-2" target="_blank">
-                            <Avatar sx={{ width: 20, height: 20 }} variant="rounded">
-                              <span className="text-sm">{item.charAt(0).toUpperCase()}</span>
-                            </Avatar>
-                            {item}
-                          </Link>
-                        ) : (
-                          <>
-                            <Avatar sx={{ width: 20, height: 20 }} variant="rounded">
-                              <span className="text-sm">{item.charAt(0).toUpperCase()}</span>
-                            </Avatar>
-                            {item}
-                          </>
-                        )}
+                        <Link href={project.linkedinPartners![index]} className="flex items-center gap-2" target="_blank">
+                          <Avatar sx={{ width: 20, height: 20 }} variant="rounded">
+                            <span className="text-sm">{item.charAt(0).toUpperCase()}</span>
+                          </Avatar>
+                          {item}
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -66,21 +54,12 @@ export default async function Project(props: Props) {
                   <ul className="px-4 font-semibold flex flex-col gap-2">
                     {project.team.map((item: string, index: number) => (
                       <li key={index}>
-                        {project.linkedinTeams ? (
-                          <Link href={project.linkedinTeams[index]} className="flex items-center gap-2" target="_blank">
-                            <Avatar sx={{ width: 20, height: 20 }} variant="rounded">
-                              <span className="text-sm">{item.charAt(0).toUpperCase()}</span>
-                            </Avatar>
-                            {item}
-                          </Link>
-                        ) : (
-                          <>
-                            <Avatar sx={{ width: 20, height: 20 }} variant="rounded">
-                              <span className="text-sm">{item.charAt(0).toUpperCase()}</span>
-                            </Avatar>
-                            {item}
-                          </>
-                        )}
+                        <Link href={project.linkedinTeams![index]} className="flex items-center gap-2" target="_blank">
+                          <Avatar sx={{ width: 20, height: 20 }} variant="rounded">
+                            <span className="text-sm">{item.charAt(0).toUpperCase()}</span>
+                          </Avatar>
+                          {item}
+                        </Link>
                       </li>
                     ))}
                   </ul>

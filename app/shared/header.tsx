@@ -1,23 +1,15 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Navbar from "@/app/components/navbar";
-import { projectCards } from "@/app/utils/project-cards";
 
 export default function Header() {
   const pathname = usePathname();
-  const projects = projectCards.map((item) => `/projects/${item.slug}`);
-  const pathInteraction = ["/about", ...projects, "/projects", "/blog", "/admin/login", "/blog/read"];  
 
-  if (pathInteraction.includes(pathname)) {
-    return (
-      <header className="sticky z-50 inset-2 flex flex-col justify-between gap-2 items-center p-4 h-fit">
-        <Navbar />
-      </header>
-    );
-  }
+  // Cek path-path spesifik
+  const isVisiblePath = ["/about", "/projects", "/blog", "/admin/login", "/blog/read"].includes(pathname || "") || pathname?.startsWith("/projects/");
 
   return (
-    <header className="inset-2 z-80 flex flex-col justify-start gap-2 items-center p-2 fixed h-fit">
+    <header className={`${isVisiblePath ? "sticky z-50 inset-2" : "inset-2 z-80 fixed"} flex flex-col justify-between gap-2 items-center p-4 h-fit`}>
       <Navbar />
     </header>
   );
