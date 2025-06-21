@@ -1,33 +1,19 @@
-"use client";
 import Markdown from "react-markdown";
-import { useState, useEffect } from "react";
 
-export default function BlogSlug({ slug }: { slug: string }) {
-  const id = slug;
+type Blog = {
+  id: number;
+  title: string;
+  description: string;
+  content: string;
+  date: string;
+  image: string;
+  updated_at: string;
+};
 
-  const [data, setData] = useState([
-    {
-      id: 0,
-      title: "",
-      description: "",
-      content: "",
-      image: "",
-      date: "",
-    },
-  ]);
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      const res = await fetch(`/api/blogs/${id}`);
-      const data = await res.json();
-      setData([data]);
-    };
-    fetchPost();
-  }, [id]);
-
+export default function BlogSlug({ blog }: { blog: Blog[] }) {
   return (
     <div className="max-w-3xl mx-auto grid grid-cols-1 gap-8 px-4 py-8 bg-zinc-50 dark:bg-zinc-800 min-h-screen">
-      {data.map((item, index) => (
+      {blog.map((item, index) => (
         <div key={index} className="flex flex-col gap-4">
           <div
             className="aspect-video bg-cover bg-center rounded-2xl overflow-hidden w-full"

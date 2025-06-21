@@ -1,14 +1,21 @@
 import BlogSlug from "@/app/components/blogs/blogSlug";
+import BlogID from "@/app/utils/blogs/blogId";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ id: string }>;
 };
 
-export default async function BlogPage(Props: Props) {
-  const { slug } = await Props.params;
-  if (!slug) {
+export default async function BlogPage(props: Props) {
+  const params = await props.searchParams;
+  const { id } = params || {};
+  
+  if (!id) {
     notFound();
   }
-  return <BlogSlug slug={slug} />;
+  const blog = await BlogID(id);
+  if (!blog) {
+    notFound();
+  }
+  return <BlogSlug blog={[blog]} />;
 }
