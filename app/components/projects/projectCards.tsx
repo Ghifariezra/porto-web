@@ -77,7 +77,7 @@ export default function ProjectCards(
                   </div>
                 </div>
                 <div
-                  className="aspect-square w-full min-h-[200px] sm:h-[200px] rounded-t-2xl sm:rounded-none bg-cover sm:bg-contain sm:bg-no-repeat bg-center overflow-hidden sm:translate-y-10 sm:group-hover:translate-y-5 transition-all duration-500 ease-in-out z-10 drop-shadow-sm"
+                  className="aspect-2/1 w-full sm:rounded-none bg-cover bg-center overflow-hidden sm:translate-y-10 sm:group-hover:translate-y-5 transition-all duration-500 ease-in-out z-10 drop-shadow-sm"
                   style={{ backgroundImage: `url(${item.image})` }}
                 ></div>
               </div>
@@ -122,7 +122,7 @@ export default function ProjectCards(
                   </div>
                 </div>
                 <div
-                  className="aspect-square w-full min-h-[200px] sm:h-[200px] rounded-t-2xl sm:rounded-none bg-cover sm:bg-contain sm:bg-no-repeat bg-center overflow-hidden sm:translate-y-10 sm:group-hover:translate-y-5 transition-all duration-500 ease-in-out z-10 drop-shadow-sm"
+                  className="aspect-2/1 w-full sm:rounded-none bg-cover bg-center overflow-hidden sm:translate-y-10 sm:group-hover:translate-y-5 transition-all duration-500 ease-in-out z-10 drop-shadow-sm"
                   style={{ backgroundImage: `url(${item.image})` }}
                 ></div>
               </div>
